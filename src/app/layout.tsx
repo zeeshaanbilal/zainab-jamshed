@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Playfair_Display } from "next/font/google";
+import BookingButtonClient from "@/components/BookingButtonClient";
 import "./globals.css";
 
 const inter = Inter({
@@ -68,9 +69,7 @@ export default function RootLayout({
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <a href="#" className="inline-flex items-center justify-center rounded-md bg-[#7749F8] px-7 py-3 text-base font-medium text-white transition-all hover:bg-[#A78BFA] hover:shadow-lg hover:shadow-[#7749F8]/30">
-                Book Free Consultation
-              </a>
+              <BookingButtonClient />
             </div>
 
             {/* Mobile Menu Button */}
