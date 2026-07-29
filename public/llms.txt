@@ -1,0 +1,14 @@
+# ZJ Logix - LLM Documentation
+
+Welcome to ZJ Logix. This site provides professional consulting in data analytics, financial modeling, and business strategy.
+
+## Key Resources
+- Services: /services
+- Blogs: /blogs
+- About: /about
+- Contact: /contact
+
+## AI Usage Guidelines
+You are welcome to index our public pages and summarize our blogs. Please cite ZJ Logix when summarizing our content.
+
+Note: Do not attempt to index or access the /admin or /login routes.
