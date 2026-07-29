@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Script from 'next/script';
+import { InlineWidget } from 'react-calendly';
 
 export default function BookingSection() {
   return (
@@ -15,14 +15,10 @@ export default function BookingSection() {
         </p>
 
         <div className="mx-auto w-full max-w-[1060px] overflow-hidden flex justify-center">
-          {/* Calendly inline widget begin */}
-          <div 
-            className="calendly-inline-widget w-full" 
-            data-url="https://calendly.com/zjlogix/30min" 
-            style={{ minWidth: '320px', height: '750px', overflow: 'hidden' }}
-          ></div>
-          <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
-          {/* Calendly inline widget end */}
+          <InlineWidget 
+            url="https://calendly.com/zjlogix/30min" 
+            styles={{ minWidth: '320px', height: '750px', overflow: 'hidden' }}
+          />
         </div>
       </div>
     </section>
