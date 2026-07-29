@@ -14,10 +14,10 @@ export default function BookingSection() {
           Turn insights into impact. Our experts are here to help you cut costs, unlock growth, and make smarter decisions backed by data. Let's design a strategy tailored to your business goals.
         </p>
 
-        <div className="mx-auto max-w-[1000px] bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden" style={{ height: '700px' }}>
+        <div className="mx-auto max-w-[1060px] w-full">
           <InlineWidget 
             url="https://calendly.com/zjlogix/30min" 
-            styles={{ width: '100%', height: '100%' }}
+            styles={{ minWidth: '320px', height: '1000px', overflow: 'hidden' }}
           />
         </div>
       </div>
