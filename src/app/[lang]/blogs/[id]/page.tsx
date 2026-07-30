@@ -5,8 +5,8 @@ import BookingSection from '@/components/BookingSection';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
-export default async function BlogDetailsPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params;
+export default async function BlogDetailsPage(props: { params: Promise<{ lang: string; id: string }> }) {
+  const resolvedParams = await props.params;
   const blog = await prisma.blog.findUnique({
     where: { id: resolvedParams.id }
   });

@@ -5,8 +5,14 @@ import FAQAccordion from "@/components/FAQAccordion";
 import ContactSection from "@/components/ContactSection";
 import BookingSection from "@/components/BookingSection";
 import Footer from "@/components/Footer";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/i18n-config";
 
-export default function Home() {
+export default async function Home(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
+  const lang = params.lang as Locale;
+  const dict = await getDictionary(lang);
+
   return (
     <div className="flex w-full flex-1 flex-col">
       {/* Hero Section */}
@@ -24,24 +30,24 @@ export default function Home() {
         {/* Hero Content */}
         <div className="relative z-10 flex w-full flex-col items-center text-center text-white mt-10 px-4">
           <h1 className="mb-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[3.8rem] font-semibold tracking-wide animate-slide-down" style={{ fontVariant: "small-caps", textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>
-            Optimize Beyond Limits
+            {dict.hero.title}
           </h1>
           <p className="mb-10 text-lg md:text-2xl lg:text-[24px] text-gray-200 animate-slide-up" style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.8)" }}>
-            Empowering organizations through data-driven strategy, advanced simulations, and measurable results.
+            {dict.hero.subtitle}
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
-            <a
-              href="#"
+            <Link
+              href={`/${params.lang}/contact`}
               className="inline-flex items-center justify-center rounded-lg bg-[#7749F8] px-8 py-3.5 text-[15.5px] font-bold text-white transition-all hover:bg-[#A78BFA] hover:-translate-y-0.5 animate-slide-right"
             >
-              Get Started
-            </a>
-            <a
-              href="#"
+              {dict.hero.cta_primary}
+            </Link>
+            <Link
+              href={`/${params.lang}/services`}
               className="inline-flex items-center justify-center rounded-lg border-2 border-[#7749F8] bg-black/20 px-8 py-3.5 text-[15.5px] font-bold text-white transition-all hover:bg-[#7749F8] hover:border-[#7749F8] hover:-translate-y-0.5 backdrop-blur-md animate-slide-left"
             >
-              Our Services
-            </a>
+              {dict.hero.cta_secondary}
+            </Link>
           </div>
         </div>
       </section>
@@ -346,7 +352,10 @@ export default function Home() {
       <ContactSection />
 
       {/* Booking Section */}
-      <BookingSection />
+      <BookingSection 
+        title={dict.booking.title} 
+        description={dict.booking.description} 
+      />
 
       {/* Footer */}
       <Footer />
