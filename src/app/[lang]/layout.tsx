@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${geistMono.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-indigo-100 selection:text-indigo-900" suppressHydrationWarning>
         <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md shadow-sm">
-          <nav className="mx-auto flex h-20 max-w-5xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             {/* Logo */}
             <div className="flex items-center cursor-pointer transition-transform hover:scale-105">
               <img src="/logo.png" alt="ZJ Logix" className="h-12 w-auto object-contain" />
@@ -70,8 +70,8 @@ export default function RootLayout({
 
             {/* Right Side Controls */}
             <div className="hidden md:flex items-center gap-4">
-              <LanguageSwitcher />
               <BookingButtonClient />
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
