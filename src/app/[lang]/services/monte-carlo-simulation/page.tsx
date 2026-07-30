@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import { getDictionary } from '@/lib/getDictionary';
 import Footer from '@/components/Footer';
 import BookingSection from '@/components/BookingSection';
 
-export default function MonteCarloSimulationPage() {
+export default async function MonteCarloSimulationPage({ params }: { params: { lang: string } | Promise<{ lang: string }> }) {
+  const resolvedParams = await Promise.resolve(params);
+  const dict = await getDictionary(resolvedParams.lang);
   return (
     <div className="w-full flex flex-col min-h-screen">
       {/* Hero Banner */}
@@ -19,20 +22,12 @@ export default function MonteCarloSimulationPage() {
         
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center text-white px-4 mt-8">
-          <h1 className="mb-4 text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight animate-slide-down uppercase" style={{ fontFamily: 'var(--font-playfair)', textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>
-            OUR SERVICES
-          </h1>
-          <p className="text-lg md:text-[20px] font-medium mb-6 text-gray-100 animate-slide-down" style={{ animationDelay: '0.2s' }}>
-            Practical insights from consultants and analysts on what actually moves the needle.
-          </p>
+          <h1 className="mb-4 text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight animate-slide-down uppercase" style={{ fontFamily: 'var(--font-playfair)', textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>{dict.servicesPage.hero.title}</h1>
+          <p className="text-lg md:text-[20px] font-medium mb-6 text-gray-100 animate-slide-down" style={{ animationDelay: '0.2s' }}>{dict.servicesPage.hero.subtitle}</p>
           <div className="flex items-center gap-2 text-base md:text-[17px] font-medium animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <Link href="/" className="text-[#A78BFA] hover:text-[#7749F8] font-bold transition-colors">
-              Home
-            </Link>
+            <Link href="/" className="text-[#A78BFA] hover:text-[#7749F8] font-bold transition-colors">{dict.navbar.home}</Link>
             <span className="text-white">/</span>
-            <Link href="/services" className="text-[#A78BFA] hover:text-[#7749F8] font-bold transition-colors">
-              Services
-            </Link>
+            <Link href="/services" className="text-[#A78BFA] hover:text-[#7749F8] font-bold transition-colors">{dict.navbar.services}</Link>
             <span className="text-white">/</span>
             <span className="text-white">Monte Carlo Simulation</span>
           </div>
@@ -56,68 +51,56 @@ export default function MonteCarloSimulationPage() {
             </div>
 
             {/* Text Content */}
-            <div className="flex flex-col gap-8 text-gray-800">
-              
-              {/* Title & Subtitle */}
-              <div className="opacity-0 animate-slide-right" style={{ animationDelay: '0.4s' }}>
-                <h2 className="text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] tracking-tight font-bold text-black mb-4">Monte Carlo Simulation</h2>
-                <p className="text-black text-[17px] leading-relaxed">
-                  Quantify uncertainty. Make risk-aware decisions with confidence.<br />
-                  Stress-test business models under thousands of realistic scenarios to understand downside risk, upside potential, and probability-weighted outcomes.
-                </p>
-              </div>
-
-              {/* Who it's for */}
-              <div className="opacity-0 animate-slide-left" style={{ animationDelay: '0.6s' }}>
-                <h3 className="text-[20px] font-bold text-black mb-3">Who it's for</h3>
-                <p className="text-[#64748b] text-[16px] leading-relaxed">
-                  Finance, Strategy, Risk, Operations, and Executive teams managing uncertainty in forecasts, investments, capacity, or major decisions
-                </p>
-              </div>
-
-              {/* Challenges we solve */}
-              <div className="opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>
-                <h3 className="text-[20px] font-bold text-black mb-5">Challenges we solve</h3>
-                <ul className="space-y-4">
-                  {[
-                    "Uncertain demand, costs, and lead times",
-                    "Risk exposure in capital investments and projects",
-                    "Volatility in revenue, margins, and cash flows",
-                    "Sensitivity to assumptions and \"what-if\" scenarios"
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <svg className="w-[20px] h-[20px] text-[#7749F8] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" clipRule="evenodd" /></svg>
-                      <span className="text-[17px] text-[#475569]">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* What we deliver */}
-              <div className="opacity-0 animate-slide-up" style={{ animationDelay: '1.0s' }}>
-                <h3 className="text-[20px] font-bold text-black mb-5">What we deliver</h3>
-                <ul className="space-y-4">
-                  {[
-                    "Probabilistic Risk & Uncertainty Modeling",
-                    "Scenario Analysis & Stress Testing",
-                    "Forecast Distributions & Confidence Intervals",
-                    "Decision Support under Uncertainty"
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <svg className="w-[20px] h-[20px] text-[#7749F8] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" clipRule="evenodd" /></svg>
-                      <span className="text-[17px] text-[#475569]">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
+            
+          <div className="flex flex-col gap-8 text-gray-800">
+            {/* Title & Subtitle */}
+            <div className="opacity-0 animate-slide-right" style={{ animationDelay: '0.4s' }}>
+              <h2 className="text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] tracking-tight whitespace-nowrap truncate font-bold text-black mb-4">{dict.servicesDetails.monteCarlo.title}</h2>
+              <p className="text-black text-[17px] leading-relaxed">
+                {dict.servicesDetails.monteCarlo.subtitle}
+              </p>
             </div>
+
+            {/* Who it's for */}
+            <div className="opacity-0 animate-slide-left" style={{ animationDelay: '0.6s' }}>
+              <h3 className="text-[20px] font-bold text-black mb-3">{dict.servicesDetails.monteCarlo.whoItsForTitle}</h3>
+              <p className="text-[#64748b] text-[16px] leading-relaxed">
+                {dict.servicesDetails.monteCarlo.whoItsForText}
+              </p>
+            </div>
+
+            {/* Challenges we solve */}
+            <div className="opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+              <h3 className="text-[20px] font-bold text-black mb-5">{dict.servicesDetails.monteCarlo.challengesTitle}</h3>
+              <ul className="space-y-4">
+                {dict.servicesDetails.monteCarlo.challenges.map((item: string, idx: number) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <svg className="w-[20px] h-[20px] text-[#7749F8] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" clipRule="evenodd" /></svg>
+                    <span className="text-[17px] text-[#475569]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* What we deliver */}
+            <div className="opacity-0 animate-slide-up" style={{ animationDelay: '1.0s' }}>
+              <h3 className="text-[20px] font-bold text-black mb-5">{dict.servicesDetails.monteCarlo.whatWeDeliverTitle}</h3>
+              <ul className="space-y-4">
+                {dict.servicesDetails.monteCarlo.whatWeDeliver.map((item: string, idx: number) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <svg className="w-[20px] h-[20px] text-[#7749F8] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" clipRule="evenodd" /></svg>
+                    <span className="text-[17px] text-[#475569] italic">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           </div>
         </div>
       </section>
 
-      <BookingSection />
-      <Footer />
+      <BookingSection booking={dict.booking} />
+      <Footer footer={dict.footer} />
     </div>
   );
 }

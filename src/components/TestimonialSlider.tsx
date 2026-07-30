@@ -2,34 +2,14 @@
 
 import { useState, useEffect } from "react";
 
-const testimonials = [
-  {
-    text: "ZJ Logix transformed our data strategy completely. Their analytics insights helped us increase revenue by 40% in just six months. The team is professional, knowledgeable, and consistently delivers measurable results.",
-    name: "Sarah Johnson",
-    title: "CEO at TechCorp Solutions",
-    image: "https://storage.googleapis.com/msgsndr/FvYZfLVlit3Fj7f39f8X/media/69834c7d26ea64f4fc948894.webp",
-  },
-  {
-    text: "The financial modeling expertise at ZJ Logix is exceptional. They helped us optimize capital allocation and reduce operational costs by 25%, making a direct impact on profitability.",
-    name: "Michael Chen",
-    title: "CFO at FinanceFlow Inc",
-    image: "https://storage.googleapis.com/msgsndr/FvYZfLVlit3Fj7f39f8X/media/69834c7d0a7fd19b8238e725.webp",
-  },
-  {
-    text: "Working with ZJ Logix was a game-changer for our supply chain operations. Their data-driven approach reduced delivery times by 30% and significantly improved customer satisfaction.",
-    name: "Emily Rodriguez",
-    title: "Operations Director at LogiChain Global",
-    image: "https://storage.googleapis.com/msgsndr/FvYZfLVlit3Fj7f39f8X/media/69834c7d212dfc2917bc1e58.webp",
-  },
-  {
-    text: "ZJ Logix provided strategic insights that were instrumental in our market expansion. Their business modeling capabilities are top-notch, and their team is a pleasure to work with.",
-    name: "David Thompson",
-    title: "VP of Strategy at GrowthMax Enterprises",
-    image: "https://storage.googleapis.com/msgsndr/FvYZfLVlit3Fj7f39f8X/media/69834c7e18c3356cae20c7ba.webp",
-  },
-];
+type Testimonial = {
+  text: string;
+  name: string;
+  title: string;
+  image: string;
+};
 
-export default function TestimonialSlider() {
+export default function TestimonialSlider({ testimonials }: { testimonials: Testimonial[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {

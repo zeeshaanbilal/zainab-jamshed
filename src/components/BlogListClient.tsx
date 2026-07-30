@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function BlogListClient({ blogs }: { blogs: any[] }) {
+export default function BlogListClient({ blogs, dict, lang }: { blogs: any[], dict: any, lang: string }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Prevent background scrolling when a modal is open
@@ -38,7 +38,7 @@ export default function BlogListClient({ blogs }: { blogs: any[] }) {
             <div className="flex flex-col flex-1 px-1">
               <Link href={`/blogs/${blog.id}`} className="block">
                 <h3 className="text-[19px] lg:text-[21px] font-bold text-gray-900 leading-snug mb-3 group-hover:text-[#7749F8] transition-colors">
-                  {blog.title}
+                  {lang === 'pt' && blog.titlePt ? blog.titlePt : blog.title}
                 </h3>
               </Link>
               
@@ -55,7 +55,7 @@ export default function BlogListClient({ blogs }: { blogs: any[] }) {
               </div>
               
               <p className="text-gray-500 text-[15px] leading-relaxed mb-6 flex-1">
-                {blog.excerpt}
+                {lang === 'pt' && blog.excerptPt ? blog.excerptPt : blog.excerpt}
               </p>
 
               <div className="flex justify-end mt-auto">
@@ -63,7 +63,7 @@ export default function BlogListClient({ blogs }: { blogs: any[] }) {
                   href={`/blogs/${blog.id}`} 
                   className="bg-[#7749F8] text-white px-6 py-2.5 rounded-lg font-medium text-[14px] hover:bg-[#59168B] transition-colors"
                 >
-                  Read More
+                  {dict.blogsPage.list.readMore}
                 </Link>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function BlogListClient({ blogs }: { blogs: any[] }) {
         ))}
         {blogs.length === 0 && (
           <div className="col-span-full py-12 text-center text-gray-500 text-lg">
-            No blogs available yet. Please add some from the admin dashboard.
+            {dict.blogsPage.list.noBlogs}
           </div>
         )}
       </div>

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { PopupButton } from "react-calendly";
 
-export default function BookingButtonClient({ isMobile = false }: { isMobile?: boolean }) {
+export default function BookingButtonClient({ isMobile = false, text = "Book Free Consultation" }: { isMobile?: boolean, text?: string }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function BookingButtonClient({ isMobile = false }: { isMobile?: b
     // Return placeholder with same styling to prevent layout shift during hydration
     return (
       <button className={buttonClass}>
-        Book Free Consultation
+        {text}
       </button>
     );
   }
@@ -28,7 +28,7 @@ export default function BookingButtonClient({ isMobile = false }: { isMobile?: b
     <PopupButton
       url="https://calendly.com/zjlogix/30min"
       rootElement={document.body}
-      text="Book Free Consultation"
+      text={text}
       className={buttonClass}
     />
   );

@@ -26,6 +26,9 @@ export async function createBlog(formData: FormData) {
   const date = formData.get('date') as string;
   const excerpt = formData.get('excerpt') as string;
   const content = formData.get('content') as string;
+  const titlePt = formData.get('titlePt') as string | null;
+  const excerptPt = formData.get('excerptPt') as string | null;
+  const contentPt = formData.get('contentPt') as string | null;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrl = formData.get('imageUrl') as string;
   
@@ -54,6 +57,9 @@ export async function createBlog(formData: FormData) {
         date,
         excerpt,
         content,
+        titlePt,
+        excerptPt,
+        contentPt,
         image: finalImageUrl,
       }
     });
@@ -72,6 +78,9 @@ export async function updateBlog(id: string, formData: FormData) {
   const date = formData.get('date') as string;
   const excerpt = formData.get('excerpt') as string;
   const content = formData.get('content') as string;
+  const titlePt = formData.get('titlePt') as string | null;
+  const excerptPt = formData.get('excerptPt') as string | null;
+  const contentPt = formData.get('contentPt') as string | null;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrl = formData.get('imageUrl') as string;
   
@@ -86,6 +95,9 @@ export async function updateBlog(id: string, formData: FormData) {
       date,
       excerpt,
       content,
+      titlePt,
+      excerptPt,
+      contentPt,
     };
 
     if (imageFile && imageFile.size > 0) {

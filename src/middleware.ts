@@ -1,33 +1,26 @@
+import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { decrypt } from '@/lib/auth';
 
-const locales = ['en', 'pt'];
-const defaultLocale = 'en';
-
-function getLocale(request: NextRequest) {
-  // Check cookie first
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  if (cookieLocale && locales.includes(cookieLocale)) {
-    return cookieLocale;
-  }
-  
-  // Then check accept-language header
-  const acceptLang = request.headers.get('accept-language');
-  if (acceptLang && acceptLang.toLowerCase().includes('pt')) return 'pt';
-  
-  return defaultLocale;
-}
+// Setup next-intl middleware
+const intlMiddleware = createMiddleware({
+  locales: ['en', 'pt'],
+  defaultLocale: 'en',
+  localePrefix: 'always'
+});
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const path = request.nextUrl.pathname;
   
   // 1. Handle Admin Authentication
-  if (pathname.startsWith('/admin')) {
+  if (path.startsWith('/admin')) {
     const session = request.cookies.get('session')?.value;
+    
     if (!session) {
       return NextResponse.redirect(new URL('/login', request.url));
     }
+    
     try {
       await decrypt(session);
       return NextResponse.next();
@@ -36,34 +29,17 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 2. Skip i18n routing for specific paths
-  if (
-    pathname.startsWith('/admin') ||
-    pathname.startsWith('/login') ||
-    pathname.startsWith('/api') ||
-    pathname.startsWith('/_next') ||
-    pathname.match(/\.[^/]+$/) // Skip static files (images, css, xml, etc.)
-  ) {
+  // 2. Skip internationalization for admin, login, and api routes
+  if (path.startsWith('/admin') || path.startsWith('/login') || path.startsWith('/api')) {
     return NextResponse.next();
   }
-
-  // 3. Handle i18n Language Routing
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
-
-  if (pathnameHasLocale) return NextResponse.next();
-
-  // If no locale in URL, redirect to the detected locale
-  const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  
+  // 3. Handle internationalization routing (Redirects / to /en)
+  return intlMiddleware(request);
 }
 
 export const config = {
-  // Match all request paths except for the ones starting with:
-  // - _next/static (static files)
-  // - _next/image (image optimization files)
-  // - favicon.ico (favicon file)
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  // Skip all paths that should not be internationalized.
+  // This matches all paths except API routes, static files, and Next.js internals.
+  matcher: ['/((?!api|_next|.*\\..*).*)']
 };

@@ -1,8 +1,12 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import BookingSection from '@/components/BookingSection';
+import { getDictionary } from '@/lib/getDictionary';
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: { params: { lang: string } | Promise<{ lang: string }> }) {
+  const resolvedParams = await Promise.resolve(params);
+  const dict = await getDictionary(resolvedParams.lang);
+
   return (
     <div className="w-full flex flex-col min-h-screen">
       {/* Hero Banner */}
@@ -20,17 +24,17 @@ export default function AboutPage() {
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center text-white px-4">
           <h1 className="mb-4 text-5xl md:text-6xl lg:text-[5rem] font-bold tracking-tight animate-slide-down" style={{ fontFamily: 'var(--font-playfair)', fontVariant: 'small-caps', textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>
-            About Us
+            {dict.aboutPage.hero.title}
           </h1>
           <p className="text-lg md:text-[22px] font-medium mb-6 text-gray-100 animate-slide-down" style={{ animationDelay: '0.2s' }}>
-            Driving measurable growth through data, strategy, and innovation.
+            {dict.aboutPage.hero.subtitle}
           </p>
           <div className="flex items-center gap-2 text-base md:text-lg font-bold animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Link href="/" className="text-[#A78BFA] hover:text-[#7749F8] transition-colors">
-              Home
+              {dict.aboutPage.hero.breadcrumbsHome}
             </Link>
             <span className="text-white">/</span>
-            <span className="text-white">About Us</span>
+            <span className="text-white">{dict.aboutPage.hero.breadcrumbsAbout}</span>
           </div>
         </div>
       </section>
@@ -41,7 +45,7 @@ export default function AboutPage() {
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
-              OUR STORY
+              {dict.aboutPage.story.sectionTitle}
             </h2>
             <img 
               src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c2e28f155a0eab6a5ea9.svg" 
@@ -54,22 +58,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             {/* Left Content (Wider) */}
             <div className="lg:col-span-8 flex flex-col gap-6 animate-slide-right">
-              <h3 className="text-2xl md:text-[28px] lg:text-[32px] font-bold text-[#111827] leading-[1.3]">
-                We began with a vision<br />
-                to make consulting measurable and<br />
-                impactful.
+              <h3 className="text-2xl md:text-[28px] lg:text-[32px] font-bold text-[#111827] leading-[1.3] whitespace-pre-line">
+                {dict.aboutPage.story.heading}
               </h3>
               
               <div className="text-gray-700 font-medium text-[15px] md:text-base leading-relaxed space-y-6">
-                <p>
-                  Founded with a vision to make business decisions smarter and faster, ZJ Logix was built on the idea that data is the new<br className="hidden lg:block" />
-                  competitive edge. Unlike traditional consulting, which often stops at recommendations, we go further building models, simulations,<br className="hidden lg:block" />
-                  and dashboards that empower leaders to act with confidence.
-                </p>
-                <p>
-                  Over the years, we've worked with organizations of all sizes from agile startups to global enterprises helping them unlock<br className="hidden lg:block" />
-                  efficiency, accelerate growth, and future-proof their strategies.
-                </p>
+                <p>{dict.aboutPage.story.p1}</p>
+                <p>{dict.aboutPage.story.p2}</p>
               </div>
             </div>
 
@@ -91,7 +86,7 @@ export default function AboutPage() {
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
-              OUR MISSION
+              {dict.aboutPage.mission.sectionTitle}
             </h2>
             <img 
               src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c2e28f155a0eab6a5ea9.svg" 
@@ -113,12 +108,12 @@ export default function AboutPage() {
             {/* Right Content (Wider) */}
             <div className="lg:col-span-9 flex flex-col gap-6 animate-slide-left">
               <h3 className="text-2xl md:text-[28px] lg:text-[32px] font-bold text-[#111827] leading-[1.3] whitespace-nowrap overflow-visible">
-                We help business grow smarter with data-driven strategies.
+                {dict.aboutPage.mission.heading}
               </h3>
               
               <div className="text-gray-700 font-medium text-[15px] md:text-base leading-relaxed space-y-6 max-w-[95%]">
                 <p>
-                  To empower organizations with the tools, insights, and strategies needed to optimize operations, minimize risks, and maximize opportunities turning complexity into clarity and strategy into measurable success.
+                  {dict.aboutPage.mission.p1}
                 </p>
               </div>
             </div>
@@ -132,7 +127,7 @@ export default function AboutPage() {
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
-              WHAT WE DO
+              {dict.aboutPage.whatWeDo.sectionTitle}
             </h2>
             <img 
               src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c2e28f155a0eab6a5ea9.svg" 
@@ -153,25 +148,17 @@ export default function AboutPage() {
 
             {/* Right Content (Wider) */}
             <div className="lg:col-span-9 flex flex-col gap-5 animate-slide-left">
-              <h3 className="text-[26px] md:text-[30px] font-black text-black leading-[1.2] tracking-tight">
-                We turn complex challenges<br className="hidden lg:block" />
-                into growth opportunities
+              <h3 className="text-[26px] md:text-[30px] font-black text-black leading-[1.2] tracking-tight whitespace-pre-line">
+                {dict.aboutPage.whatWeDo.heading}
               </h3>
               
               <div className="text-gray-600 font-medium text-[14px] md:text-[15px] leading-relaxed">
                 <p>
-                  We help organizations transform operations into engines of growth by combining advanced technology, proven methodologies, and deep business expertise.
+                  {dict.aboutPage.whatWeDo.p1}
                 </p>
 
                 <ul className="space-y-2.5 mt-6">
-                  {[
-                    { title: "Business Modeling:", text: "Lean processes, revenue growth strategies, and risk management." },
-                    { title: "Decision Optimization:", text: "Supply chain design, logistics, and resource allocation." },
-                    { title: "Financial Modeling:", text: "Strategic scenario planning and amortization analysis." },
-                    { title: "Analytics:", text: "KPIs, dashboards, predictive insights, and digital transformation." },
-                    { title: "Churn Analysis:", text: "Identifying and retaining high-value customers." },
-                    { title: "Data Annotation:", text: "Reliable labeling for machine learning outcomes." }
-                  ].map((item, i) => (
+                  {dict.aboutPage.whatWeDo.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <div className="mt-1 flex-shrink-0">
                         <svg className="w-[16px] h-[16px] text-[#7749F8]" viewBox="0 0 24 24" fill="currentColor">
@@ -187,7 +174,7 @@ export default function AboutPage() {
 
                 <div className="pt-6">
                   <Link href="/services" className="inline-flex items-center justify-center rounded-md bg-[#7749F8] px-6 py-2.5 text-[13px] font-semibold text-white transition-all hover:bg-[#59168B]">
-                    View Services
+                    {dict.aboutPage.whatWeDo.btn}
                   </Link>
                 </div>
               </div>
@@ -202,7 +189,7 @@ export default function AboutPage() {
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
-              OUR VISION
+              {dict.aboutPage.vision.sectionTitle}
             </h2>
             <img 
               src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c2e28f155a0eab6a5ea9.svg" 
@@ -215,12 +202,12 @@ export default function AboutPage() {
             {/* Left Content (Wider) */}
             <div className="lg:col-span-9 flex flex-col gap-6 animate-slide-right">
               <h3 className="text-[26px] md:text-[30px] font-black text-black leading-[1.3]">
-                We imagine a future where every decision is clear and precise.
+                {dict.aboutPage.vision.heading}
               </h3>
               
               <div className="text-gray-600 font-medium text-[14px] md:text-[15px] leading-relaxed">
                 <p>
-                  A world where every business decision is backed by precision analytics, enabling organizations to grow sustainably and create lasting impact.
+                  {dict.aboutPage.vision.p1}
                 </p>
               </div>
             </div>
@@ -243,7 +230,7 @@ export default function AboutPage() {
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
-              OUR VALUES
+              {dict.aboutPage.values.sectionTitle}
             </h2>
             <img 
               src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c2e28f155a0eab6a5ea9.svg" 
@@ -256,17 +243,12 @@ export default function AboutPage() {
             {/* Left Content (Wider) */}
             <div className="lg:col-span-9 flex flex-col gap-6 animate-slide-right">
               <h3 className="text-[26px] md:text-[30px] font-black text-black leading-[1.3]">
-                What we stand for
+                {dict.aboutPage.values.heading}
               </h3>
               
               <div className="text-gray-600 font-medium text-[14px] md:text-[15px] leading-relaxed">
                 <ul className="space-y-2.5">
-                  {[
-                    { title: "Integrity:", text: "Transparent and ethical in every engagement." },
-                    { title: "Innovation:", text: "Leveraging advanced tools and methods for breakthrough results." },
-                    { title: "Impact:", text: "Focused on measurable, sustainable outcomes." },
-                    { title: "Collaboration:", text: "Working side by side with clients as trusted partners." }
-                  ].map((item, i) => (
+                  {dict.aboutPage.values.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <div className="mt-1 flex-shrink-0">
                         <svg className="w-[16px] h-[16px] text-[#7749F8]" viewBox="0 0 24 24" fill="currentColor">
@@ -294,8 +276,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <BookingSection />
-      <Footer />
+      <BookingSection booking={dict.booking} />
+      <Footer footer={dict.footer} />
     </div>
   );
 }

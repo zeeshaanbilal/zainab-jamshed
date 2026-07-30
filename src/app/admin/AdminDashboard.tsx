@@ -130,9 +130,15 @@ export default function AdminDashboard({ blogs }: { blogs: any[] }) {
               className="p-6 space-y-4"
               action={handleSubmit}
             >
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                <input required name="title" defaultValue={editingBlog?.title} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Title (English)</label>
+                  <input required name="title" defaultValue={editingBlog?.title} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Title (Portuguese) - Optional</label>
+                  <input name="titlePt" defaultValue={editingBlog?.titlePt} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -160,13 +166,25 @@ export default function AdminDashboard({ blogs }: { blogs: any[] }) {
                 <p className="text-xs text-gray-500 mt-2 italic">Note: If you provide both, the uploaded file takes priority. {editingBlog && !editingBlog.image?.startsWith('http') ? 'Currently using a local uploaded file.' : ''}</p>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt</label>
-                <textarea required name="excerpt" defaultValue={editingBlog?.excerpt} rows={2} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt (English)</label>
+                  <textarea required name="excerpt" defaultValue={editingBlog?.excerpt} rows={2} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt (Portuguese) - Optional</label>
+                  <textarea name="excerptPt" defaultValue={editingBlog?.excerptPt} rows={2} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Content (Markdown Supported!)</label>
-                <textarea required name="content" defaultValue={editingBlog?.content} rows={10} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 font-mono text-sm focus:ring-[#7749F8] focus:border-[#7749F8]" placeholder="You can use **bold**, *italics*, # Headings, etc." />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Content (English) - Markdown</label>
+                  <textarea required name="content" defaultValue={editingBlog?.content} rows={10} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 font-mono text-sm focus:ring-[#7749F8] focus:border-[#7749F8]" placeholder="You can use **bold**, *italics*, # Headings, etc." />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Content (Portuguese) - Optional</label>
+                  <textarea name="contentPt" defaultValue={editingBlog?.contentPt} rows={10} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 font-mono text-sm focus:ring-[#7749F8] focus:border-[#7749F8]" placeholder="Conteúdo em português..." />
+                </div>
               </div>
               <div className="pt-4 flex justify-end gap-3 sticky bottom-0 bg-white border-t border-gray-100 py-4 -mx-6 px-6">
                 <button type="button" onClick={() => { setIsAdding(false); setEditingBlog(null); }} className="px-5 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium disabled:opacity-50">Cancel</button>

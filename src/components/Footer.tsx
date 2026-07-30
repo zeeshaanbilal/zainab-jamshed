@@ -1,7 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function Footer() {
+type FooterDict = {
+  description: string;
+  company: string;
+  aboutUs: string;
+  whyChooseUs: string;
+  testimonials: string;
+  services: string;
+  businessModeling: string;
+  decisionOptimization: string;
+  financialModeling: string;
+  analytics: string;
+  churnAnalysis: string;
+  monteCarlo: string;
+  support: string;
+  memberFaq: string;
+  contactUs: string;
+  allRightsReserved: string;
+  developedBy: string;
+};
+
+export default function Footer({ footer }: { footer: FooterDict }) {
   return (
     <footer className="w-full bg-[#21272A] pt-24 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
@@ -12,7 +32,7 @@ export default function Footer() {
               <img src="/logo.png" alt="ZJ LOGIX Logo" className="h-10 w-auto brightness-0 invert" />
             </div>
             <p className="text-white font-medium text-[16px] md:text-[18px] leading-relaxed mb-8 max-w-[280px]">
-              Innovating the digital landscape with elegant solutions and timeless services.
+              {footer.description}
             </p>
             <div className="flex items-center gap-4">
               {/* LinkedIn */}
@@ -32,33 +52,33 @@ export default function Footer() {
 
           {/* Column 2: Company */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-extrabold text-[20px] mb-6">Company</h3>
+            <h3 className="text-white font-extrabold text-[20px] mb-6">{footer.company}</h3>
             <ul className="flex flex-col gap-4">
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">About us</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Why Choose Us</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Testimonials</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.aboutUs}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.whyChooseUs}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.testimonials}</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Services */}
           <div className="lg:col-span-4">
-            <h3 className="text-white font-extrabold text-[20px] mb-6">Services</h3>
+            <h3 className="text-white font-extrabold text-[20px] mb-6">{footer.services}</h3>
             <ul className="flex flex-col gap-4">
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Business Modeling</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Decision Optimization</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Financial Modeling</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Analytics</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Churn Analysis</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Monte Carlo Simulation</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.businessModeling}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.decisionOptimization}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.financialModeling}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.analytics}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.churnAnalysis}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.monteCarlo}</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Support */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-extrabold text-[20px] mb-6">Support</h3>
+            <h3 className="text-white font-extrabold text-[20px] mb-6">{footer.support}</h3>
             <ul className="flex flex-col gap-4">
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Member FAQ</Link></li>
-              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">Contact Us</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.memberFaq}</Link></li>
+              <li><Link href="#" className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.contactUs}</Link></li>
             </ul>
           </div>
         </div>
@@ -69,10 +89,10 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/60 font-medium text-[15px]">
-            <span className="font-bold text-white">ZJLOGIX 2025.</span> All rights reserved.
+            <span className="font-bold text-white">ZJLOGIX 2025.</span> {footer.allRightsReserved}
           </p>
           <p className="text-white/60 font-medium text-[15px]">
-            Developed by <span className="font-bold text-[#7749F8] hover:text-[#59168B] cursor-pointer transition-colors">Hash Turn</span>
+            {footer.developedBy} <span className="font-bold text-[#7749F8] hover:text-[#59168B] cursor-pointer transition-colors">Hash Turn</span>
           </p>
         </div>
       </div>

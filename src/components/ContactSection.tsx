@@ -1,17 +1,30 @@
 import React from 'react';
 
-export default function ContactSection() {
+type ContactDict = {
+  sectionTitle: string;
+  subtitle: string;
+  addressTitle: string;
+  callTitle: string;
+  emailTitle: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  subjectPlaceholder: string;
+  messagePlaceholder: string;
+  sendButton: string;
+};
+
+export default function ContactSection({ contact }: { contact: ContactDict }) {
   return (
     <section className="w-full bg-white py-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1000px]">
         {/* Section Headers */}
         <div className="mb-16 flex flex-col items-center text-center">
           <h2 className="text-2xl md:text-3xl font-bold uppercase text-[#59168B]">
-            CONTACT US
+            {contact.sectionTitle}
           </h2>
           <div className="h-[3px] w-12 bg-[#7749F8] mt-3 mb-4 rounded-full"></div>
           <p className="text-gray-500 max-w-2xl text-[15px] md:text-base font-medium">
-            Tell us your challenges, we'll map the fastest path to impact.
+            {contact.subtitle}
           </p>
         </div>
 
@@ -26,7 +39,7 @@ export default function ContactSection() {
                 </svg>
               </div>
               <div className="pt-1 animate-slide-up">
-                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">Address</h3>
+                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{contact.addressTitle}</h3>
                 <p className="text-gray-500 text-[14px] leading-relaxed">
                   WAPDA Town, Phase-2, Multan Pakistan
                 </p>
@@ -41,7 +54,7 @@ export default function ContactSection() {
                 </svg>
               </div>
               <div className="pt-1 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">Call Us</h3>
+                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{contact.callTitle}</h3>
                 <p className="text-gray-500 text-[14px]">
                   +92 306 0707490
                 </p>
@@ -56,7 +69,7 @@ export default function ContactSection() {
                 </svg>
               </div>
               <div className="pt-1 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">Email Us</h3>
+                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{contact.emailTitle}</h3>
                 <p className="text-gray-500 text-[14px]">
                   contact@zjlogix.com
                 </p>
@@ -70,7 +83,7 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <input 
                   type="text" 
-                  placeholder="Your Name*" 
+                  placeholder={contact.namePlaceholder} 
                   className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400"
                 />
                 <div className="relative">
@@ -81,7 +94,7 @@ export default function ContactSection() {
                   </div>
                   <input 
                     type="email" 
-                    placeholder="Your Email*" 
+                    placeholder={contact.emailPlaceholder} 
                     className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400"
                   />
                 </div>
@@ -89,12 +102,12 @@ export default function ContactSection() {
               
               <input 
                 type="text" 
-                placeholder="Subject*" 
+                placeholder={contact.subjectPlaceholder} 
                 className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400"
               />
               
               <textarea 
-                placeholder="Message*" 
+                placeholder={contact.messagePlaceholder} 
                 rows={5}
                 className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400 resize-none"
               ></textarea>
@@ -104,7 +117,7 @@ export default function ContactSection() {
                   type="submit" 
                   className="bg-[#7749F8] hover:bg-[#59168B] text-white font-medium py-[14px] px-8 rounded-lg transition-colors duration-300"
                 >
-                  Send Message
+                  {contact.sendButton}
                 </button>
               </div>
             </form>
