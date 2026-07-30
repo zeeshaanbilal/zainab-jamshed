@@ -1,43 +1,44 @@
 "use client";
 
-import { usePathname, useRouter } from 'next/navigation';
-import React from 'react';
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-export default function LanguageSwitcher({ currentLang }: { currentLang: string }) {
-  const router = useRouter();
+export default function LanguageSwitcher() {
   const pathname = usePathname();
 
-  const switchLanguage = (newLang: string) => {
-    // Set cookie
-    document.cookie = `NEXT_LOCALE=${newLang}; path=/; max-age=31536000`;
-    
-    // Redirect
-    if (!pathname) return '/';
+  // Detect current language from the URL (e.g., /en/about -> en)
+  const currentLocale = pathname ? pathname.split('/')[1] : 'en'; 
+  
+  // Helper to generate the URL for a specific language
+  const getUrl = (locale: string) => {
+    if (!pathname) return `/${locale}`;
     const segments = pathname.split('/');
-    segments[1] = newLang; // Replace the language segment
-    const newPath = segments.join('/');
-    router.push(newPath);
-    router.refresh(); // Refresh to ensure layout updates
+    segments[1] = locale; // Replace the first segment (which is the locale)
+    return segments.join('/') || '/';
   };
 
   return (
-    <div className="flex items-center space-x-2">
-      <button
-        onClick={() => switchLanguage('en')}
-        className={`px-2 py-1 rounded-md text-sm font-medium transition-colors ${
-          currentLang === 'en' ? 'bg-[#7749F8] text-white' : 'text-gray-600 hover:bg-gray-100'
+    <div className="flex items-center gap-1 border border-gray-200 rounded-lg p-1 bg-gray-50">
+      <Link 
+        href={getUrl('en')}
+        className={`px-3 py-1.5 text-sm font-semibold rounded-md transition-all ${
+          currentLocale === 'en' 
+            ? 'bg-white text-[#7749F8] shadow-sm ring-1 ring-black/5' 
+            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
         }`}
       >
         EN
-      </button>
-      <button
-        onClick={() => switchLanguage('pt')}
-        className={`px-2 py-1 rounded-md text-sm font-medium transition-colors ${
-          currentLang === 'pt' ? 'bg-[#7749F8] text-white' : 'text-gray-600 hover:bg-gray-100'
+      </Link>
+      <Link 
+        href={getUrl('pt')}
+        className={`px-3 py-1.5 text-sm font-semibold rounded-md transition-all ${
+          currentLocale === 'pt' 
+            ? 'bg-white text-[#7749F8] shadow-sm ring-1 ring-black/5' 
+            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
         }`}
       >
         PT
-      </button>
+      </Link>
     </div>
   );
 }
