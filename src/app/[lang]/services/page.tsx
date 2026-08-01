@@ -66,7 +66,7 @@ export default async function ServicesPage({ params }: { params: { lang: string 
               return (
                 <div key={index} className="bg-white rounded-[20px] p-6 shadow-[0_4px_25px_rgba(0,0,0,0.04)] flex flex-col h-full border border-gray-100 transition-shadow hover:shadow-xl opacity-0 animate-slide-up" style={{ animationDelay: delays[index] }}>
                   <img src={images[index]} alt={card.title} className="w-full h-[240px] object-cover rounded-xl mb-7" />
-                  <h3 className="text-[19px] lg:text-[20px] xl:text-[22px] font-bold text-gray-900 mb-6 px-1 whitespace-nowrap truncate tracking-tight opacity-0 animate-slide-right">{card.title}</h3>
+                  <h3 className="text-[19px] lg:text-[20px] xl:text-[22px] font-bold text-gray-900 mb-6 px-1 leading-tight tracking-tight opacity-0 animate-slide-right">{card.title}</h3>
                   <ul className="space-y-5 mb-8 flex-1 px-1 opacity-0 animate-slide-right" style={{ animationDelay: '0.7s' }}>
                     {card.features.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4">

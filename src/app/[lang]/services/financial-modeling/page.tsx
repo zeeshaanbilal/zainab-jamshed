@@ -55,7 +55,7 @@ export default async function FinancialModelingPage({ params }: { params: { lang
           <div className="flex flex-col gap-8 text-gray-800">
             {/* Title & Subtitle */}
             <div className="opacity-0 animate-slide-right" style={{ animationDelay: '0.4s' }}>
-              <h2 className="text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] tracking-tight whitespace-nowrap truncate font-bold text-black mb-4">{dict.servicesDetails.financialModeling.title}</h2>
+              <h2 className="text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] tracking-tight leading-tight font-bold text-black mb-4">{dict.servicesDetails.financialModeling.title}</h2>
               <p className="text-black text-[17px] leading-relaxed">
                 {dict.servicesDetails.financialModeling.subtitle}
               </p>
