@@ -97,7 +97,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             {/* Left Image (Narrower) */}
-            <div className="lg:col-span-3 flex justify-center lg:justify-start animate-slide-right">
+            <div className="lg:col-span-3 flex justify-center lg:justify-start animate-slide-right order-last lg:order-none mt-8 lg:mt-0">
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c7f88f155a4b836b28fc.svg" 
                 alt="Our Mission illustration" 
@@ -138,7 +138,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start mt-8">
             {/* Left Image (Narrower) */}
-            <div className="lg:col-span-3 flex justify-center lg:justify-start animate-slide-right pt-2">
+            <div className="lg:col-span-3 flex justify-center lg:justify-start animate-slide-right pt-2 order-last lg:order-none mt-8 lg:mt-0">
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/692ad8c92b865e0c84ac37dc.svg" 
                 alt="What We Do illustration" 
