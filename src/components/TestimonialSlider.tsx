@@ -31,10 +31,10 @@ export default function TestimonialSlider({ testimonials }: { testimonials: Test
   return (
     <div className="w-full max-w-3xl mx-auto flex flex-col items-center mt-8">
       <div className="flex items-center justify-center w-full gap-5 md:gap-10 px-2">
-        {/* Left Arrow */}
+        {/* Left Arrow - Desktop Only */}
         <button
           onClick={handlePrev}
-          className="flex-shrink-0 w-10 h-10 rounded-full border-2 border-[#AE4AFF] flex items-center justify-center text-black bg-white hover:bg-[#AE4AFF] hover:text-white transition-all duration-300 shadow-sm hover:shadow"
+          className="hidden md:flex flex-shrink-0 w-10 h-10 rounded-full border-2 border-[#AE4AFF] items-center justify-center text-black bg-white hover:bg-[#AE4AFF] hover:text-white transition-all duration-300 shadow-sm hover:shadow"
           aria-label="Previous Testimonial"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
@@ -53,9 +53,9 @@ export default function TestimonialSlider({ testimonials }: { testimonials: Test
           >
             {testimonials.map((item, index) => (
               <div key={index} className="w-full flex-shrink-0 relative flex items-center min-h-[240px]">
-                <div className="flex flex-col md:flex-row items-center justify-between w-full pl-12 pr-2 md:pr-4 py-8">
-                  <div className="flex-1 text-left pr-4 md:pr-8">
-                    <p className="text-black text-[15px] md:text-[16px] leading-[1.8] mb-6 font-normal">
+                <div className="flex flex-col md:flex-row items-center justify-between w-full pl-8 pr-2 md:pl-12 md:pr-4 py-8">
+                  <div className="flex-1 text-left pr-2 md:pr-8">
+                    <p className="text-black text-[15px] md:text-[16px] leading-[1.7] md:leading-[1.8] mb-6 font-normal">
                       <span className="text-[#AE4AFF] font-serif font-black pr-1 text-xl inline-block">“</span>
                       {item.text}
                       <span className="text-[#AE4AFF] font-serif font-black pl-1 text-xl inline-block">”</span>
@@ -83,27 +83,47 @@ export default function TestimonialSlider({ testimonials }: { testimonials: Test
           </div>
         </div>
 
-        {/* Right Arrow */}
+        {/* Right Arrow - Desktop Only */}
         <button
           onClick={handleNext}
-          className="flex-shrink-0 w-10 h-10 rounded-full border-2 border-[#AE4AFF] flex items-center justify-center text-black bg-white hover:bg-[#AE4AFF] hover:text-white transition-all duration-300 shadow-sm hover:shadow"
+          className="hidden md:flex flex-shrink-0 w-10 h-10 rounded-full border-2 border-[#AE4AFF] items-center justify-center text-black bg-white hover:bg-[#AE4AFF] hover:text-white transition-all duration-300 shadow-sm hover:shadow"
           aria-label="Next Testimonial"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
         </button>
       </div>
 
-      {/* Dots */}
-      <div className="flex items-center gap-2 mt-6">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`rounded-full transition-all duration-300 ${currentIndex === index ? "w-2.5 h-2.5 bg-[#AE4AFF]" : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+      {/* Controls: Dots and Mobile Arrows */}
+      <div className="flex items-center gap-4 mt-6">
+        {/* Left Arrow - Mobile Only */}
+        <button
+          onClick={handlePrev}
+          className="md:hidden flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#AE4AFF] flex items-center justify-center text-[#AE4AFF] bg-white hover:bg-[#AE4AFF] hover:text-white transition-all duration-300 shadow-sm"
+          aria-label="Previous Testimonial"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+        </button>
+
+        <div className="flex items-center gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`rounded-full transition-all duration-300 ${currentIndex === index ? "w-2.5 h-2.5 bg-[#AE4AFF]" : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Right Arrow - Mobile Only */}
+        <button
+          onClick={handleNext}
+          className="md:hidden flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#AE4AFF] flex items-center justify-center text-[#AE4AFF] bg-white hover:bg-[#AE4AFF] hover:text-white transition-all duration-300 shadow-sm"
+          aria-label="Next Testimonial"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+        </button>
       </div>
     </div>
   );

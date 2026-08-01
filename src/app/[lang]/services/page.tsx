@@ -54,6 +54,14 @@ export default async function ServicesPage({ params }: { params: { lang: string 
                 "https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/692d961782f4c5df5555bb1b.webp"
               ];
               const delays = ["0.2s", "0.4s", "0.6s", "0.8s", "1s", "1.2s"];
+              const slugs = [
+                "business-modeling",
+                "decision-optimization",
+                "financial-modeling",
+                "analytics",
+                "churn-analysis",
+                "monte-carlo-simulation"
+              ];
               
               return (
                 <div key={index} className="bg-white rounded-[20px] p-6 shadow-[0_4px_25px_rgba(0,0,0,0.04)] flex flex-col h-full border border-gray-100 transition-shadow hover:shadow-xl opacity-0 animate-slide-up" style={{ animationDelay: delays[index] }}>
@@ -68,7 +76,7 @@ export default async function ServicesPage({ params }: { params: { lang: string 
                     ))}
                   </ul>
                   <div className="flex justify-end mt-auto pt-6 opacity-0 animate-slide-left">
-                    <Link href="#" className="bg-[#7749F8] text-white px-8 py-3 rounded-lg font-semibold text-[15px] hover:bg-[#59168B] transition-colors shadow-sm hover:shadow-md">{dict.servicesPage.cards.readMore}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/${slugs[index]}`} className="bg-[#7749F8] text-white px-8 py-3 rounded-lg font-semibold text-[15px] hover:bg-[#59168B] transition-colors shadow-sm hover:shadow-md">{dict.servicesPage.cards.readMore}</Link>
                   </div>
                 </div>
               );

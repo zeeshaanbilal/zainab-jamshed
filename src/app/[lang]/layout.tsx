@@ -50,7 +50,7 @@ export default async function RootLayout({
             </div>
 
             {/* Nav Links */}
-            <div className="hidden md:flex items-center gap-8 text-lg font-medium text-gray-700">
+            <div className="hidden lg:flex items-center gap-5 xl:gap-8 text-base xl:text-lg font-medium text-gray-700">
               <Link href={`/${resolvedParams.lang}`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.home}</Link>
               <Link href={`/${resolvedParams.lang}/about`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.aboutUs}</Link>
               <div className="relative group">
@@ -76,13 +76,13 @@ export default async function RootLayout({
             </div>
 
             {/* Right Side Controls */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4">
               <BookingButtonClient text={dict.navbar.bookConsultation} />
               <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button & Drawer */}
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <MobileMenuClient dict={dict} lang={resolvedParams.lang} />
             </div>
           </nav>

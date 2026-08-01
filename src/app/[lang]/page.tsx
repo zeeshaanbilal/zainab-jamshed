@@ -35,18 +35,18 @@ export default async function Home({ params }: { params: { lang: string } | Prom
             {dict.hero.description}
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
-            <a
-              href="#"
+            <Link
+              href={`/${resolvedParams.lang}/contact`}
               className="inline-flex items-center justify-center rounded-lg bg-[#7749F8] px-8 py-3.5 text-[15.5px] font-bold text-white transition-all hover:bg-[#A78BFA] hover:-translate-y-0.5 animate-slide-right"
             >
               {dict.hero.getStarted}
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href={`/${resolvedParams.lang}/services`}
               className="inline-flex items-center justify-center rounded-lg border-2 border-[#7749F8] bg-black/20 px-8 py-3.5 text-[15.5px] font-bold text-white transition-all hover:bg-[#7749F8] hover:border-[#7749F8] hover:-translate-y-0.5 backdrop-blur-md animate-slide-left"
             >
               {dict.hero.ourServices}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -104,12 +104,12 @@ export default async function Home({ params }: { params: { lang: string } | Prom
               </ul>
 
               <div className="pt-6">
-                <a
-                  href="#"
+                <Link
+                  href={`/${resolvedParams.lang}/about`}
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#7749F8] px-8 py-3.5 text-base font-bold text-white transition-all hover:bg-[#A78BFA] hover:-translate-y-1 w-fit"
                 >
                   {dict.about.readMore}
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -183,12 +183,12 @@ export default async function Home({ params }: { params: { lang: string } | Prom
 
           {/* View All Button */}
           <div className="mt-16 flex justify-center animate-slide-up">
-            <a
-              href="#"
+            <Link
+              href={`/${resolvedParams.lang}/services`}
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#7749F8] px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-[#A78BFA] w-fit"
             >
               {dict.services.viewAll}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -223,9 +223,9 @@ export default async function Home({ params }: { params: { lang: string } | Prom
                     {dict.blogs.blog1Desc}
                   </p>
                 </div>
-                <a href="#" className="text-[14px] font-bold text-[#59168B] hover:text-[#7749F8]">
+                <Link href={`/${resolvedParams.lang}/blogs`} className="text-[14px] font-bold text-[#59168B] hover:text-[#7749F8]">
                   {dict.blogs.readMore}
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -243,21 +243,21 @@ export default async function Home({ params }: { params: { lang: string } | Prom
                     {dict.blogs.blog2Desc}
                   </p>
                 </div>
-                <a href="#" className="text-[14px] font-bold text-[#59168B] hover:text-[#7749F8]">
+                <Link href={`/${resolvedParams.lang}/blogs`} className="text-[14px] font-bold text-[#59168B] hover:text-[#7749F8]">
                   {dict.blogs.readMore}
-                </a>
+                </Link>
               </div>
             </div>
           </div>
 
           {/* View All Button */}
           <div className="mt-12 flex justify-center animate-slide-up" style={{ animationDelay: '0.7s' }}>
-            <a
-              href="#"
+            <Link
+              href={`/${resolvedParams.lang}/blogs`}
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#7749F8] px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-[#A78BFA] w-fit"
             >
               {dict.blogs.viewAll}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
