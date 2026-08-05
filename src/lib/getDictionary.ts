@@ -296,7 +296,7 @@ const dictionaries = {
     servicesDetails: {
       "businessModeling": {
             "heroBreadcrumb": "Business Modeling",
-            "title": "Business Modeling Architect scalable, profit-focused business models",
+            "title": "Business Modeling",
             "subtitle": "Architect scalable, profit-focused business models",
             "whoItsForTitle": "Who it's for",
             "whoItsForText": "Leaders redesigning operations, pricing, or product portfolios; teams pursuing growth with margin discipline.",
@@ -317,7 +317,7 @@ const dictionaries = {
       },
       "decisionOptimization": {
             "heroBreadcrumb": "Decision Optimization",
-            "title": "Decision Optimization Turn complex trade-offs into repeatable, high-ROI choices",
+            "title": "Decision Optimization",
             "subtitle": "Turn complex trade-offs into repeatable, high-ROI choices",
             "whoItsForTitle": "Who it's for",
             "whoItsForText": "Supply chain managers, operations directors, and planners needing to maximize capacity or reduce logistics costs.",
@@ -338,7 +338,7 @@ const dictionaries = {
       },
       "financialModeling": {
             "heroBreadcrumb": "Financial Modeling",
-            "title": "Financial Modeling Evaluate markets, price dynamically, and plan cash flow with precision",
+            "title": "Financial Modeling",
             "subtitle": "Evaluate markets, price dynamically, and plan cash flow with precision",
             "whoItsForTitle": "Who it's for",
             "whoItsForText": "CFOs, investors, and founders needing robust models for M&A, fundraising, or strategic pivots.",
@@ -359,7 +359,7 @@ const dictionaries = {
       },
       "analytics": {
             "heroBreadcrumb": "Analytics",
-            "title": "Analytics Break silos and turn raw data into strategic foresight",
+            "title": "Analytics",
             "subtitle": "Break silos and turn raw data into strategic foresight",
             "whoItsForTitle": "Who it's for",
             "whoItsForText": "Executives and managers overwhelmed by data but starved for clear, actionable insights.",
@@ -380,7 +380,7 @@ const dictionaries = {
       },
       "churnAnalysis": {
             "heroBreadcrumb": "Churn Analysis",
-            "title": "Churn Analysis Identify at-risk customers early and improve retention",
+            "title": "Churn Analysis",
             "subtitle": "Identify at-risk customers early and improve retention",
             "whoItsForTitle": "Who it's for",
             "whoItsForText": "Customer success teams, product managers, and marketers focused on reducing customer loss and increasing lifetime value.",
@@ -401,7 +401,7 @@ const dictionaries = {
       },
       "monteCarlo": {
             "heroBreadcrumb": "Monte Carlo Simulation",
-            "title": "Monte Carlo Simulation Quantify uncertainty and make decisions with confidence",
+            "title": "Monte Carlo Simulation",
             "subtitle": "Quantify uncertainty and make decisions with confidence",
             "whoItsForTitle": "Who it's for",
             "whoItsForText": "Risk managers, project planners, and strategic leaders navigating highly variable markets or complex project timelines.",
