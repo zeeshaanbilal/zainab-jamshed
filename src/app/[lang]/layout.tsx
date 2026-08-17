@@ -43,7 +43,7 @@ export default async function RootLayout({
     <html lang={resolvedParams.lang} className={`${inter.variable} ${geistMono.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-indigo-100 selection:text-indigo-900 overflow-x-hidden" suppressHydrationWarning>
         <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md shadow-sm">
-          <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <nav className="flex h-20 w-full items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-12">
             {/* Logo */}
             <div className="flex items-center cursor-pointer transition-transform hover:scale-105">
               <img src="/logo.png" alt="ZJ Logix" className="h-12 w-auto object-contain" />
@@ -76,14 +76,16 @@ export default async function RootLayout({
             </div>
 
             {/* Right Side Controls */}
-            <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-              <BookingButtonClient text={dict.navbar.bookConsultation} />
+            <div className="flex items-center gap-6 xl:gap-8 ml-auto lg:ml-4">
+              <div className="hidden lg:flex items-center">
+                <BookingButtonClient text={dict.navbar.bookConsultation} />
+              </div>
               <LanguageSwitcher />
-            </div>
-
-            {/* Mobile Menu Button & Drawer */}
-            <div className="lg:hidden flex items-center">
-              <MobileMenuClient dict={dict} lang={resolvedParams.lang} />
+              
+              {/* Mobile Menu - Always visible on the right on mobile */}
+              <div className="lg:hidden flex items-center">
+                <MobileMenuClient dict={dict} lang={resolvedParams.lang} />
+              </div>
             </div>
           </nav>
         </header>

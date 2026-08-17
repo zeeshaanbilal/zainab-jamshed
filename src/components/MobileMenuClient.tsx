@@ -74,9 +74,6 @@ export default function MobileMenuClient({ dict, lang }: { dict: any, lang: stri
 
               <div className="mt-auto p-6 flex flex-col space-y-4 border-t border-gray-100 shrink-0">
                 <BookingButtonClient isMobile={true} text={dict.navbar.bookConsultation} />
-                <div className="flex justify-center pt-2">
-                  <LanguageSwitcher />
-                </div>
               </div>
             </div>
           </>,
