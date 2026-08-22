@@ -39,7 +39,7 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ id
               {dict.navbar.home}
             </Link>
             <span className="text-gray-400">/</span>
-            <Link href="/blogs" className="text-[#A78BFA] hover:text-[#7749F8] transition-colors">
+            <Link href={`/${resolvedParams.lang}/blogs`} className="text-[#A78BFA] hover:text-[#7749F8] transition-colors">
               {dict.navbar.blogs}
             </Link>
             <span className="text-gray-400">/</span>
@@ -79,7 +79,7 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ id
           
           <div className="mt-16 pt-8 border-t border-gray-200">
             <Link 
-              href="/blogs"
+              href={`/${resolvedParams.lang}/blogs`}
               className="inline-flex items-center gap-2 text-[#7749F8] hover:text-[#59168B] font-semibold transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>

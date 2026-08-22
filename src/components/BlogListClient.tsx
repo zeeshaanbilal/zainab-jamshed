@@ -36,7 +36,7 @@ export default function BlogListClient({ blogs, dict, lang }: { blogs: any[], di
             </div>
 
             <div className="flex flex-col flex-1 px-1">
-              <Link href={`/blogs/${blog.id}`} className="block">
+              <Link href={`/${lang}/blogs/${blog.id}`} className="block">
                 <h3 className="text-[19px] lg:text-[21px] font-bold text-gray-900 leading-snug mb-3 group-hover:text-[#7749F8] transition-colors">
                   {lang === 'pt' && blog.titlePt ? blog.titlePt : blog.title}
                 </h3>
@@ -60,7 +60,7 @@ export default function BlogListClient({ blogs, dict, lang }: { blogs: any[], di
 
               <div className="flex justify-end mt-auto">
                 <Link 
-                  href={`/blogs/${blog.id}`} 
+                  href={`/${lang}/blogs/${blog.id}`} 
                   className="bg-[#7749F8] text-white px-6 py-2.5 rounded-lg font-medium text-[14px] hover:bg-[#59168B] transition-colors"
                 >
                   {dict.blogsPage.list.readMore}
