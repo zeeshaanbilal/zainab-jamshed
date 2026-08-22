@@ -110,9 +110,9 @@ const dictionaries = {
       sectionTitle: "CONTACT US",
       subtitle: "Tell us your challenges, we'll map the fastest path to impact.",
       contactItems: [
-        { icon: 'address', title: 'Address', lines: ['WAPDA Town, Phase-2, Multan Pakistan'] },
-        { icon: 'phone', title: 'Call Us', lines: ['+92 306 0707490'] },
-        { icon: 'email', title: 'Email Us', lines: ['contact@zjlogix.com'] }
+        { icon: 'address' as const, title: 'Address', lines: ['WAPDA Town, Phase-2, Multan Pakistan'] },
+        { icon: 'phone' as const, title: 'Call Us', lines: ['+92 306 0707490'] },
+        { icon: 'email' as const, title: 'Email Us', lines: ['contact@zjlogix.com'] }
       ],
       namePlaceholder: "Your Name*",
       emailPlaceholder: "Your Email*",
@@ -535,8 +535,8 @@ const dictionaries = {
       sectionTitle: "FALE CONOSCO",
       subtitle: "",
       contactItems: [
-        { icon: 'address', title: 'ZJ Logix Brasil', lines: ['Rio de Janeiro'] },
-        { icon: 'email', title: 'Gilberto Serodio', lines: ['gilbertos@zjlogix.com'] }
+        { icon: 'address' as const, title: 'ZJ Logix Brasil', lines: ['Rio de Janeiro'] },
+        { icon: 'email' as const, title: 'Gilberto Serodio', lines: ['gilbertos@zjlogix.com'] }
       ],
       namePlaceholder: "Seu Nome*",
       emailPlaceholder: "Seu Email*",
