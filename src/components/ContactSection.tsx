@@ -3,9 +3,7 @@ import React from 'react';
 type ContactDict = {
   sectionTitle: string;
   subtitle: string;
-  addressTitle: string;
-  callTitle: string;
-  emailTitle: string;
+  contactItems: { icon: 'address' | 'phone' | 'email'; title: string; lines: string[] }[];
   namePlaceholder: string;
   emailPlaceholder: string;
   subjectPlaceholder: string;
@@ -31,50 +29,38 @@ export default function ContactSection({ contact }: { contact: ContactDict }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10">
           {/* Left Column: Contact Info */}
           <div className="lg:col-span-4 flex flex-col gap-10">
-            {/* Address */}
-            <div className="flex items-start gap-4 overflow-hidden">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#F3EBFF] rounded-xl flex items-center justify-center text-[#7749F8] animate-slide-right">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
+            {contact.contactItems.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4 overflow-hidden">
+                <div 
+                  className="flex-shrink-0 w-12 h-12 bg-[#F3EBFF] rounded-xl flex items-center justify-center text-[#7749F8] animate-slide-right"
+                  style={{ animationDelay: `${idx * 0.2}s` }}
+                >
+                  {item.icon === 'address' && (
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                  )}
+                  {item.icon === 'phone' && (
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.73 0 .96-.64.96-1.18V16.37c0-.54-.45-.99-.99-.99z" />
+                    </svg>
+                  )}
+                  {item.icon === 'email' && (
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                  )}
+                </div>
+                <div className="pt-1 animate-slide-up" style={{ animationDelay: `${idx * 0.2}s` }}>
+                  {item.title && <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{item.title}</h3>}
+                  <div className="text-gray-500 text-[14px] leading-relaxed flex flex-col">
+                    {item.lines.map((line, lidx) => (
+                      <span key={lidx}>{line}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="pt-1 animate-slide-up">
-                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{contact.addressTitle}</h3>
-                <p className="text-gray-500 text-[14px] leading-relaxed">
-                  WAPDA Town, Phase-2, Multan Pakistan
-                </p>
-              </div>
-            </div>
-
-            {/* Call Us */}
-            <div className="flex items-start gap-4 overflow-hidden">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#F3EBFF] rounded-xl flex items-center justify-center text-[#7749F8] animate-slide-right" style={{ animationDelay: '0.2s' }}>
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.73 0 .96-.64.96-1.18V16.37c0-.54-.45-.99-.99-.99z" />
-                </svg>
-              </div>
-              <div className="pt-1 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{contact.callTitle}</h3>
-                <p className="text-gray-500 text-[14px]">
-                  +92 306 0707490
-                </p>
-              </div>
-            </div>
-
-            {/* Email Us */}
-            <div className="flex items-start gap-4 overflow-hidden">
-              <div className="flex-shrink-0 w-12 h-12 bg-[#F3EBFF] rounded-xl flex items-center justify-center text-[#7749F8] animate-slide-right" style={{ animationDelay: '0.4s' }}>
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
-              </div>
-              <div className="pt-1 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-                <h3 className="text-[#111827] font-bold text-[16px] mb-1 leading-tight">{contact.emailTitle}</h3>
-                <p className="text-gray-500 text-[14px]">
-                  contact@zjlogix.com
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Right Column: Contact Form */}

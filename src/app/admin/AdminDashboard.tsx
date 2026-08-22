@@ -14,7 +14,10 @@ export default function AdminDashboard({ blogs }: { blogs: any[] }) {
     if (confirm('Are you sure you want to delete this blog?')) {
       try {
         setErrorMsg(null);
-        await deleteBlog(id);
+        const result = await deleteBlog(id);
+      if (result?.error) {
+        setErrorMsg(result.error);
+      }
       } catch (e: any) {
         setErrorMsg(e.message || 'Failed to delete blog.');
       }
@@ -26,9 +29,17 @@ export default function AdminDashboard({ blogs }: { blogs: any[] }) {
     setErrorMsg(null);
     try {
       if (editingBlog) {
-        await updateBlog(editingBlog.id, formData);
+        const result = await updateBlog(editingBlog.id, formData);
+        if (result?.error) {
+          setErrorMsg(result.error);
+          return;
+        }
       } else {
-        await createBlog(formData);
+        const result = await createBlog(formData);
+        if (result?.error) {
+          setErrorMsg(result.error);
+          return;
+        }
       }
       setIsAdding(false);
       setEditingBlog(null);

@@ -33,7 +33,7 @@ export async function createBlog(formData: FormData) {
   const imageUrl = formData.get('imageUrl') as string;
   
   if (!title || !author || !date || !excerpt || !content) {
-    throw new Error('All core fields are required.');
+    return { error: 'All core fields are required.' };
   }
   
   try {
@@ -47,7 +47,7 @@ export async function createBlog(formData: FormData) {
     }
 
     if (!finalImageUrl) {
-      throw new Error('You must provide either an Image URL or Upload an Image.');
+      return { error: 'You must provide either an Image URL or Upload an Image.' };
     }
 
     await prisma.blog.create({
@@ -68,7 +68,7 @@ export async function createBlog(formData: FormData) {
     revalidatePath('/admin');
     return { success: true };
   } catch (error: any) {
-    throw new Error(error.message || 'Failed to create blog.');
+    return { error: error.message || 'Failed to create blog. If you are on Vercel, image uploads are not supported locally. Please use an Image URL instead.' };
   }
 }
 
@@ -85,7 +85,7 @@ export async function updateBlog(id: string, formData: FormData) {
   const imageUrl = formData.get('imageUrl') as string;
   
   if (!title || !author || !date || !excerpt || !content) {
-    throw new Error('Missing required text fields.');
+    return { error: 'Missing required text fields.' };
   }
   
   try {
@@ -118,7 +118,7 @@ export async function updateBlog(id: string, formData: FormData) {
     revalidatePath('/admin');
     return { success: true };
   } catch (error: any) {
-    throw new Error(error.message || 'Failed to update blog.');
+    return { error: error.message || 'Failed to update blog. If you are on Vercel, image uploads are not supported locally. Please use an Image URL instead.' };
   }
 }
 
@@ -132,6 +132,6 @@ export async function deleteBlog(id: string) {
     revalidatePath('/admin');
     return { success: true };
   } catch (error) {
-    throw new Error('Failed to delete blog.');
+    return { error: 'Failed to delete blog.' };
   }
 }
