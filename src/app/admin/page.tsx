@@ -7,5 +7,9 @@ export default async function AdminPage() {
     orderBy: { createdAt: 'desc' }
   });
   
-  return <AdminDashboard blogs={blogs} />;
+  const messages = await prisma.contactMessage.findMany({
+    orderBy: { createdAt: 'desc' }
+  });
+  
+  return <AdminDashboard blogs={blogs} messages={messages} />;
 }

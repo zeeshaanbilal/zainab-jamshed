@@ -6,12 +6,12 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { getDictionary } from '@/lib/getDictionary';
 
-export default async function BlogDetailsPage({ params }: { params: Promise<{ id: string, lang: string }> }) {
+export default async function BlogDetailsPage({ params }: { params: Promise<{ slug: string, lang: string }> }) {
   const resolvedParams = await params;
   const dict = await getDictionary(resolvedParams.lang);
   
   const blog = await prisma.blog.findUnique({
-    where: { id: resolvedParams.id }
+    where: { slug: resolvedParams.slug }
   });
 
   if (!blog) {

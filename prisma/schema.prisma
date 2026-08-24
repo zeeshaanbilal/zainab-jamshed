@@ -9,6 +9,7 @@ datasource db {
 
 model Blog {
   id        String   @id @default(cuid())
+  slug      String   @unique @default(cuid())
   title     String
   author    String
   date      String
@@ -19,5 +20,14 @@ model Blog {
   titlePt   String?
   excerptPt String?
   contentPt String?
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
   createdAt DateTime @default(now())
 }

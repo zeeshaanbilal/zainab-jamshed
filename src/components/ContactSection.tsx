@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactFormClient from './ContactFormClient';
 
 type ContactDict = {
   sectionTitle: string;
@@ -65,48 +66,13 @@ export default function ContactSection({ contact }: { contact: ContactDict }) {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-8">
-            <form className="flex flex-col gap-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <input 
-                  type="text" 
-                  placeholder={contact.namePlaceholder} 
-                  className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400"
-                />
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <svg className="h-[18px] w-[18px] text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <input 
-                    type="email" 
-                    placeholder={contact.emailPlaceholder} 
-                    className="w-full pl-11 pr-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-              
-              <input 
-                type="text" 
-                placeholder={contact.subjectPlaceholder} 
-                className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400"
-              />
-              
-              <textarea 
-                placeholder={contact.messagePlaceholder} 
-                rows={5}
-                className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-[#FAFAFA] text-[15px] focus:outline-none focus:border-[#7749F8] focus:ring-1 focus:ring-[#7749F8] transition-colors placeholder:text-gray-400 resize-none"
-              ></textarea>
-              
-              <div className="flex justify-end mt-2">
-                <button 
-                  type="submit" 
-                  className="bg-[#7749F8] hover:bg-[#59168B] text-white font-medium py-[14px] px-8 rounded-lg transition-colors duration-300"
-                >
-                  {contact.sendButton}
-                </button>
-              </div>
-            </form>
+            <ContactFormClient 
+              namePlaceholder={contact.namePlaceholder}
+              emailPlaceholder={contact.emailPlaceholder}
+              subjectPlaceholder={contact.subjectPlaceholder}
+              messagePlaceholder={contact.messagePlaceholder}
+              sendButton={contact.sendButton}
+            />
           </div>
         </div>
       </div>

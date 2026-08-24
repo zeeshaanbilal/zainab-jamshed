@@ -5,6 +5,24 @@ import { revalidatePath } from 'next/cache';
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
 
+async function generateUniqueSlug(title: string, existingId?: string): Promise<string> {
+  const baseSlug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+  
+  let slug = baseSlug;
+  let counter = 1;
+  while (true) {
+    const existing = await prisma.blog.findUnique({ where: { slug } });
+    if (!existing || existing.id === existingId) {
+      return slug;
+    }
+    slug = `${baseSlug}-${counter}`;
+    counter++;
+  }
+}
+
 async function uploadImage(file: File): Promise<string | null> {
   if (!file || file.size === 0) return null;
   
@@ -31,6 +49,7 @@ export async function createBlog(formData: FormData) {
   const contentPt = formData.get('contentPt') as string | null;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrl = formData.get('imageUrl') as string;
+  const customSlug = formData.get('customSlug') as string | null;
   
   if (!title || !author || !date || !excerpt || !content) {
     return { error: 'All core fields are required.' };
@@ -52,6 +71,7 @@ export async function createBlog(formData: FormData) {
 
     await prisma.blog.create({
       data: {
+        slug: customSlug ? await generateUniqueSlug(customSlug) : await generateUniqueSlug(title),
         title,
         author,
         date,
@@ -83,6 +103,7 @@ export async function updateBlog(id: string, formData: FormData) {
   const contentPt = formData.get('contentPt') as string | null;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrl = formData.get('imageUrl') as string;
+  const customSlug = formData.get('customSlug') as string | null;
   
   if (!title || !author || !date || !excerpt || !content) {
     return { error: 'Missing required text fields.' };
@@ -90,6 +111,7 @@ export async function updateBlog(id: string, formData: FormData) {
   
   try {
     const dataToUpdate: any = {
+      slug: customSlug ? await generateUniqueSlug(customSlug, id) : await generateUniqueSlug(title, id),
       title,
       author,
       date,
