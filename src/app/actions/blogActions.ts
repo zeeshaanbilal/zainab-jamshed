@@ -59,6 +59,9 @@ export async function createBlog(formData: FormData) {
     let finalImageUrl = imageUrl;
 
     if (imageFile && imageFile.size > 0) {
+      if (process.env.NODE_ENV === 'production') {
+        return { error: 'Direct image uploads are not supported on the live server. Please upload your image to a site like ImgBB or Imgur and paste the link in the "Image URL" box instead.' };
+      }
       const uploadedUrl = await uploadImage(imageFile);
       if (uploadedUrl) {
         finalImageUrl = uploadedUrl;
@@ -123,6 +126,9 @@ export async function updateBlog(id: string, formData: FormData) {
     };
 
     if (imageFile && imageFile.size > 0) {
+      if (process.env.NODE_ENV === 'production') {
+        return { error: 'Direct image uploads are not supported on the live server. Please upload your image to a site like ImgBB or Imgur and paste the link in the "Image URL" box instead.' };
+      }
       const uploadedUrl = await uploadImage(imageFile);
       if (uploadedUrl) {
         dataToUpdate.image = uploadedUrl;

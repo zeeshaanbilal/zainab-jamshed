@@ -277,16 +277,22 @@ export default function AdminDashboard({ blogs, messages }: { blogs: any[], mess
               <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
                 <h3 className="text-sm font-semibold text-gray-700 mb-3">Blog Image</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">Upload New Image</label>
-                    <input type="file" accept="image/*" name="imageFile" className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-900 bg-white focus:ring-[#7749F8] focus:border-[#7749F8]" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">OR Image URL</label>
-                    <input type="text" name="imageUrl" defaultValue={editingBlog?.image} placeholder="https://example.com/image.jpg" className="w-full border border-gray-300 rounded-lg p-2.5 text-sm text-gray-900 bg-white focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                  {process.env.NODE_ENV !== 'production' && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-1">Upload New Image (Local Only)</label>
+                      <input type="file" accept="image/*" name="imageFile" className="w-full border border-gray-300 rounded-lg p-2 text-sm text-gray-900 bg-white focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                    </div>
+                  )}
+                  <div className={process.env.NODE_ENV === 'production' ? 'col-span-1 md:col-span-2' : ''}>
+                    <label className="block text-sm font-medium text-gray-600 mb-1">Image URL {process.env.NODE_ENV === 'production' && '(Required on live site)'}</label>
+                    <input required={process.env.NODE_ENV === 'production'} type="text" name="imageUrl" defaultValue={editingBlog?.image} placeholder="https://example.com/image.jpg" className="w-full border border-gray-300 rounded-lg p-2.5 text-sm text-gray-900 bg-white focus:ring-[#7749F8] focus:border-[#7749F8]" />
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 mt-2 italic">Note: If you provide both, the uploaded file takes priority. {editingBlog && !editingBlog.image?.startsWith('http') ? 'Currently using a local uploaded file.' : ''}</p>
+                <p className="text-xs text-gray-500 mt-2 italic">
+                  {process.env.NODE_ENV === 'production' 
+                    ? 'Note: On the live website, you must provide a direct URL to an image. You can upload your image to sites like ImgBB or Imgur and paste the link here.' 
+                    : `Note: If you provide both, the uploaded file takes priority. ${editingBlog && !editingBlog.image?.startsWith('http') ? 'Currently using a local uploaded file.' : ''}`}
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
