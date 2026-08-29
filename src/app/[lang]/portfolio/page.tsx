@@ -21,7 +21,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
         <div className="absolute inset-0 z-0 bg-zinc-900 overflow-hidden">
           <img
             src="/hero.jpg"
-            alt="Glass Skyscraper"
+            alt="ZJ Logix Office"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/65"></div>

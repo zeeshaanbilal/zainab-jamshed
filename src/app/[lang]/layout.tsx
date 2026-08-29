@@ -22,8 +22,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "ZJ Logix",
-  description: "Optimize Beyond Limits",
+  title: "ZJ Logix - Data Analytics & Strategic Consulting",
+  description: "ZJ Logix specializes in data analytics, business intelligence, financial modeling, and strategic consulting. We help businesses make data-driven decisions.",
 };
 
 import ScrollObserver from "@/components/ScrollObserver";

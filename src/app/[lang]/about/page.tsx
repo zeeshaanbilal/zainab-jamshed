@@ -2,6 +2,16 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import BookingSection from '@/components/BookingSection';
 import { getDictionary } from '@/lib/getDictionary';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { lang: string } | Promise<{ lang: string }> }): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+  const dict = await getDictionary(resolvedParams.lang);
+  return {
+    title: `${dict.aboutPage.hero.title} - ZJ Logix`,
+    description: dict.aboutPage.hero.subtitle || 'We help organizations transform operations into engines of measurable growth through data analytics and strategic consulting.',
+  };
+}
 
 export default async function AboutPage({ params }: { params: { lang: string } | Promise<{ lang: string }> }) {
   const resolvedParams = await Promise.resolve(params);
@@ -15,7 +25,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
         <div className="absolute inset-0 z-0 bg-zinc-900 overflow-hidden">
           <img
             src="/hero.jpg"
-            alt="Glass Skyscraper"
+            alt="ZJ Logix Office"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/65"></div>
