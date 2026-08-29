@@ -39,14 +39,23 @@ async function uploadImage(file: File): Promise<string | null> {
 }
 
 export async function createBlog(formData: FormData) {
-  const title = formData.get('title') as string;
+  const titleEn = formData.get('title') as string;
+  const excerptEn = formData.get('excerpt') as string;
+  const contentEn = formData.get('content') as string;
+  const titlePtRaw = formData.get('titlePt') as string | null;
+  const excerptPtRaw = formData.get('excerptPt') as string | null;
+  const contentPtRaw = formData.get('contentPt') as string | null;
+
+  const title = titleEn || titlePtRaw || '';
+  const excerpt = excerptEn || excerptPtRaw || '';
+  const content = contentEn || contentPtRaw || '';
+
+  const titlePt = titlePtRaw || titleEn || null;
+  const excerptPt = excerptPtRaw || excerptEn || null;
+  const contentPt = contentPtRaw || contentEn || null;
+
   const author = formData.get('author') as string;
   const date = formData.get('date') as string;
-  const excerpt = formData.get('excerpt') as string;
-  const content = formData.get('content') as string;
-  const titlePt = formData.get('titlePt') as string | null;
-  const excerptPt = formData.get('excerptPt') as string | null;
-  const contentPt = formData.get('contentPt') as string | null;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrl = formData.get('imageUrl') as string;
   const customSlug = formData.get('customSlug') as string | null;
@@ -96,14 +105,23 @@ export async function createBlog(formData: FormData) {
 }
 
 export async function updateBlog(id: string, formData: FormData) {
-  const title = formData.get('title') as string;
+  const titleEn = formData.get('title') as string;
+  const excerptEn = formData.get('excerpt') as string;
+  const contentEn = formData.get('content') as string;
+  const titlePtRaw = formData.get('titlePt') as string | null;
+  const excerptPtRaw = formData.get('excerptPt') as string | null;
+  const contentPtRaw = formData.get('contentPt') as string | null;
+
+  const title = titleEn || titlePtRaw || '';
+  const excerpt = excerptEn || excerptPtRaw || '';
+  const content = contentEn || contentPtRaw || '';
+
+  const titlePt = titlePtRaw || titleEn || null;
+  const excerptPt = excerptPtRaw || excerptEn || null;
+  const contentPt = contentPtRaw || contentEn || null;
+
   const author = formData.get('author') as string;
   const date = formData.get('date') as string;
-  const excerpt = formData.get('excerpt') as string;
-  const content = formData.get('content') as string;
-  const titlePt = formData.get('titlePt') as string | null;
-  const excerptPt = formData.get('excerptPt') as string | null;
-  const contentPt = formData.get('contentPt') as string | null;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrl = formData.get('imageUrl') as string;
   const customSlug = formData.get('customSlug') as string | null;

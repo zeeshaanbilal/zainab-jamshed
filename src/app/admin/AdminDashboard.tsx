@@ -49,10 +49,12 @@ export default function AdminDashboard({ blogs, messages }: { blogs: any[], mess
   function handleInitialSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const title = formData.get('title') as string;
+    const titleEn = formData.get('title') as string;
+    const titlePt = formData.get('titlePt') as string;
+    const fallbackTitle = titleEn || titlePt || 'untitled-blog';
     
     // Auto-generate a suggestion
-    const baseSlug = title ? title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : '';
+    const baseSlug = fallbackTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
     setSuggestedSlug(editingBlog?.slug || baseSlug);
     
     setPendingFormData(formData);
@@ -256,10 +258,10 @@ export default function AdminDashboard({ blogs, messages }: { blogs: any[], mess
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Title (English)</label>
-                  <input required name="title" defaultValue={editingBlog?.title} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                  <input name="title" defaultValue={editingBlog?.title} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Title (Portuguese) - Optional</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Title (Portuguese)</label>
                   <input name="titlePt" defaultValue={editingBlog?.titlePt} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
                 </div>
               </div>
@@ -290,20 +292,20 @@ export default function AdminDashboard({ blogs, messages }: { blogs: any[], mess
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt (English)</label>
-                  <textarea required name="excerpt" defaultValue={editingBlog?.excerpt} rows={2} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
+                  <textarea name="excerpt" defaultValue={editingBlog?.excerpt} rows={2} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt (Portuguese) - Optional</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt (Portuguese)</label>
                   <textarea name="excerptPt" defaultValue={editingBlog?.excerptPt} rows={2} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 focus:ring-[#7749F8] focus:border-[#7749F8]" />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Content (English) - Markdown</label>
-                  <textarea required name="content" defaultValue={editingBlog?.content} rows={10} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 font-mono text-sm focus:ring-[#7749F8] focus:border-[#7749F8]" placeholder="You can use **bold**, *italics*, # Headings, etc." />
+                  <textarea name="content" defaultValue={editingBlog?.content} rows={10} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 font-mono text-sm focus:ring-[#7749F8] focus:border-[#7749F8]" placeholder="You can use **bold**, *italics*, # Headings, etc." />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Content (Portuguese) - Optional</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Content (Portuguese) - Markdown</label>
                   <textarea name="contentPt" defaultValue={editingBlog?.contentPt} rows={10} className="w-full border border-gray-300 rounded-lg p-2.5 text-gray-900 font-mono text-sm focus:ring-[#7749F8] focus:border-[#7749F8]" placeholder="Conteúdo em português..." />
                 </div>
               </div>
