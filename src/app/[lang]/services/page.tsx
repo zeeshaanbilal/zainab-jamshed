@@ -41,7 +41,7 @@ export default async function ServicesPage({ params }: { params: { lang: string 
 
       {/* Services Grid */}
       <section className="w-full bg-[#fcfcfc] py-24 px-4 sm:px-6 lg:px-8 flex-1">
-        <div className="mx-auto max-w-[1300px]">
+        <div className="mx-auto max-w-full max-w-[1300px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             
             {dict.servicesPage.cards.items.map((card, index) => {

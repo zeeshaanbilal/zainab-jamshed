@@ -15,7 +15,7 @@ type ContactDict = {
 export default function ContactSection({ contact }: { contact: ContactDict }) {
   return (
     <section className="w-full bg-white py-24 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-[1000px]">
+      <div className="mx-auto max-w-full max-w-[1000px]">
         {/* Section Headers */}
         <div className="mb-16 flex flex-col items-center text-center">
           <h2 className="text-2xl md:text-3xl font-bold uppercase text-[#59168B]">

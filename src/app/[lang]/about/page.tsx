@@ -41,7 +41,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
       {/* Main Content Area - Our Story Section */}
       <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-[1350px]">
+        <div className="mx-auto max-w-full max-w-[1350px]">
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
@@ -73,7 +73,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c3956a32b285a69c5a0e.webp" 
                 alt="Building the vision illustration" 
-                className="w-full max-w-[350px] lg:max-w-full h-auto object-contain"
+                className="w-full max-w-full max-w-[350px] lg:max-w-full h-auto object-contain"
               />
             </div>
           </div>
@@ -82,7 +82,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
       {/* Our Mission Section */}
       <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-[1350px]">
+        <div className="mx-auto max-w-full max-w-[1350px]">
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
@@ -101,7 +101,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/6929c7f88f155a4b836b28fc.svg" 
                 alt="Our Mission illustration" 
-                className="w-full max-w-[340px] lg:max-w-[90%] h-auto object-contain"
+                className="w-full max-w-full max-w-[340px] lg:max-w-[90%] h-auto object-contain"
               />
             </div>
 
@@ -123,7 +123,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
       {/* What We Do Section */}
       <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-[1350px]">
+        <div className="mx-auto max-w-full max-w-[1350px]">
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
@@ -142,7 +142,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/692ad8c92b865e0c84ac37dc.svg" 
                 alt="What We Do illustration" 
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-full max-w-[300px] h-auto object-contain"
               />
             </div>
 
@@ -185,7 +185,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
       {/* Our Vision Section */}
       <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-[1350px]">
+        <div className="mx-auto max-w-full max-w-[1350px]">
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
@@ -217,7 +217,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/692ad850aaad91b93dacc999.svg" 
                 alt="Our Vision illustration" 
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-full max-w-[300px] h-auto object-contain"
               />
             </div>
           </div>
@@ -226,7 +226,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
 
       {/* Our Values Section */}
       <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-[1350px]">
+        <div className="mx-auto max-w-full max-w-[1350px]">
           {/* Section Heading */}
           <div className="flex flex-col items-center text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#59168B] mb-2 tracking-wide">
@@ -269,7 +269,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
               <img 
                 src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/691747201c143af6750861c6.svg" 
                 alt="Our Values illustration" 
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-full max-w-[300px] h-auto object-contain"
               />
             </div>
           </div>

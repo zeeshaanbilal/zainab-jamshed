@@ -15,7 +15,7 @@ export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
   };
 
   return (
-    <div className="w-full max-w-[1000px] mx-auto flex flex-col gap-3 md:gap-4">
+    <div className="w-full max-w-full max-w-[1000px] mx-auto flex flex-col gap-3 md:gap-4">
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         return (

@@ -36,12 +36,12 @@ export default async function ChurnAnalysisPage({ params }: { params: { lang: st
 
       {/* Main Content Area */}
       <section className="w-full bg-[#fcfcfc] py-24 px-4 sm:px-8 lg:px-12 flex-1">
-        <div className="mx-auto max-w-[950px]">
+        <div className="mx-auto max-w-full max-w-[950px]">
           <div className="bg-white rounded-[24px] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 p-5 sm:p-8 md:p-12 flex flex-col gap-10">
             
             {/* Main Image */}
             <div className="w-full flex justify-center mb-2">
-              <div className="w-full max-w-[700px] rounded-[16px] overflow-hidden border border-gray-100 shadow-sm opacity-0 animate-pop-in" style={{ animationDelay: '0.2s' }}>
+              <div className="w-full max-w-full max-w-[700px] rounded-[16px] overflow-hidden border border-gray-100 shadow-sm opacity-0 animate-pop-in" style={{ animationDelay: '0.2s' }}>
                 <img 
                   src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/FvYZfLVlit3Fj7f39f8X/media/692d9501d0116bffb3071cff.webp" 
                   alt="Churn Analysis Workspace"

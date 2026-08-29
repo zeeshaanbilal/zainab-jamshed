@@ -19,7 +19,7 @@ export default function BookingSection({ booking }: { booking: BookingDict }) {
           {booking.subtitle}
         </p>
 
-        <div className="mx-auto max-w-[1060px] w-full">
+        <div className="mx-auto max-w-full max-w-[1060px] w-full">
           <InlineWidget 
             url="https://calendly.com/zjlogix/30min" 
             styles={{ minWidth: '320px', height: '1000px', overflow: 'hidden' }}
