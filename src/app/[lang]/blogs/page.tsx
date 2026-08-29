@@ -16,15 +16,8 @@ export default async function BlogsPage({ params }: { params: { lang: string } |
     orderBy: { createdAt: 'asc' }
   });
 
-  const blogs = allBlogs.filter((blog: any) => {
-    if (resolvedParams.lang === 'pt') {
-      // Only show blogs with Portuguese titles on the PT page
-      return blog.titlePt && blog.titlePt.trim() !== '';
-    } else {
-      // Show all blogs on the English page (since English title is always required)
-      return true;
-    }
-  });
+  // Show all blogs regardless of language. The client component handles fallback to English.
+  const blogs = allBlogs;
 
   return (
     <div className="w-full flex flex-col min-h-screen">
