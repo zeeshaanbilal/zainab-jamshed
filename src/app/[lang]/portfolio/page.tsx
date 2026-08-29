@@ -100,12 +100,12 @@ export default async function PortfolioPage({ params }: { params: { lang: string
           <div className="flex flex-col lg:flex-row-reverse gap-12 items-start animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <div className="w-full lg:w-1/3 sticky top-28">
               <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                <div className="w-16 h-16 bg-[#E0F2FE] rounded-xl flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-[#0284C7]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                <div className="w-16 h-16 bg-[#F3E8FF] rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-[#7749F8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2 font-serif">{p.projects.bayer.title}</h2>
-                <h3 className="text-lg font-medium text-[#0284C7] mb-6">{p.projects.bayer.subtitle}</h3>
-                <div className="h-1 w-12 bg-[#0284C7] rounded"></div>
+                <h3 className="text-lg font-medium text-[#7749F8] mb-6">{p.projects.bayer.subtitle}</h3>
+                <div className="h-1 w-12 bg-[#7749F8] rounded"></div>
               </div>
             </div>
             
@@ -120,7 +120,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
                 <ul className="space-y-4">
                   {p.projects.bayer.methodologyList.map((item: string, index: number) => (
                     <li key={index} className="flex gap-4">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center mt-1">✓</span>
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F3E8FF] text-[#7749F8] flex items-center justify-center mt-1">✓</span>
                       <span className="text-gray-600 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }}></span>
                     </li>
                   ))}
@@ -128,12 +128,12 @@ export default async function PortfolioPage({ params }: { params: { lang: string
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-[#0284C7] to-[#0369A1] p-8 rounded-2xl shadow-lg text-white">
+                <div className="bg-gradient-to-br from-[#7749F8] to-[#59168B] p-8 rounded-2xl shadow-lg text-white">
                   <h4 className="text-xl font-bold mb-4">{p.projects.bayer.techStackTitle}</h4>
                   <p className="text-gray-100 leading-relaxed">{p.projects.bayer.techStack}</p>
                 </div>
                 
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#0284C7]/20">
+                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#7749F8]/20">
                   <h4 className="text-xl font-bold text-gray-900 mb-4">{p.projects.bayer.impactTitle}</h4>
                   <p className="text-gray-600 leading-relaxed">{p.projects.bayer.impact}</p>
                 </div>
@@ -146,11 +146,11 @@ export default async function PortfolioPage({ params }: { params: { lang: string
             <div className="w-full lg:w-1/3 sticky top-28">
               <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
                 <div className="w-16 h-16 bg-[#F3E8FF] rounded-xl flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-[#9333EA]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                  <svg className="w-8 h-8 text-[#7749F8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2 font-serif">{p.projects.nfl.title}</h2>
-                <h3 className="text-lg font-medium text-[#9333EA] mb-6">{p.projects.nfl.subtitle}</h3>
-                <div className="h-1 w-12 bg-[#9333EA] rounded"></div>
+                <h3 className="text-lg font-medium text-[#7749F8] mb-6">{p.projects.nfl.subtitle}</h3>
+                <div className="h-1 w-12 bg-[#7749F8] rounded"></div>
               </div>
             </div>
             
@@ -165,7 +165,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
                 <ul className="space-y-4">
                   {p.projects.nfl.methodologyList.map((item: string, index: number) => (
                     <li key={index} className="flex gap-4">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F3E8FF] text-[#9333EA] flex items-center justify-center mt-1">✓</span>
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F3E8FF] text-[#7749F8] flex items-center justify-center mt-1">✓</span>
                       <span className="text-gray-600 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }}></span>
                     </li>
                   ))}
@@ -173,12 +173,12 @@ export default async function PortfolioPage({ params }: { params: { lang: string
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-[#9333EA] to-[#6B21A8] p-8 rounded-2xl shadow-lg text-white">
+                <div className="bg-gradient-to-br from-[#7749F8] to-[#59168B] p-8 rounded-2xl shadow-lg text-white">
                   <h4 className="text-xl font-bold mb-4">{p.projects.nfl.techStackTitle}</h4>
                   <p className="text-gray-100 leading-relaxed">{p.projects.nfl.techStack}</p>
                 </div>
                 
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#9333EA]/20">
+                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#7749F8]/20">
                   <h4 className="text-xl font-bold text-gray-900 mb-4">{p.projects.nfl.impactTitle}</h4>
                   <p className="text-gray-600 leading-relaxed">{p.projects.nfl.impact}</p>
                 </div>
@@ -191,12 +191,12 @@ export default async function PortfolioPage({ params }: { params: { lang: string
           <div className="flex flex-col lg:flex-row-reverse gap-12 items-start animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <div className="w-full lg:w-1/3 sticky top-28">
               <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                <div className="w-16 h-16 bg-[#FEE2E2] rounded-xl flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-[#DC2626]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                <div className="w-16 h-16 bg-[#F3E8FF] rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-[#7749F8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2 font-serif">{p.projects.cocaCola.title}</h2>
-                <h3 className="text-lg font-medium text-[#DC2626] mb-6">{p.projects.cocaCola.subtitle}</h3>
-                <div className="h-1 w-12 bg-[#DC2626] rounded"></div>
+                <h3 className="text-lg font-medium text-[#7749F8] mb-6">{p.projects.cocaCola.subtitle}</h3>
+                <div className="h-1 w-12 bg-[#7749F8] rounded"></div>
               </div>
             </div>
             
@@ -211,7 +211,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
                 <ul className="space-y-4">
                   {p.projects.cocaCola.methodologyList.map((item: string, index: number) => (
                     <li key={index} className="flex gap-4">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center mt-1">✓</span>
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F3E8FF] text-[#7749F8] flex items-center justify-center mt-1">✓</span>
                       <span className="text-gray-600 text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') }}></span>
                     </li>
                   ))}
@@ -219,12 +219,12 @@ export default async function PortfolioPage({ params }: { params: { lang: string
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-[#DC2626] to-[#991B1B] p-8 rounded-2xl shadow-lg text-white">
+                <div className="bg-gradient-to-br from-[#7749F8] to-[#59168B] p-8 rounded-2xl shadow-lg text-white">
                   <h4 className="text-xl font-bold mb-4">{p.projects.cocaCola.techStackTitle}</h4>
                   <p className="text-gray-100 leading-relaxed">{p.projects.cocaCola.techStack}</p>
                 </div>
                 
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#DC2626]/20">
+                <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#7749F8]/20">
                   <h4 className="text-xl font-bold text-gray-900 mb-4">{p.projects.cocaCola.impactTitle}</h4>
                   <p className="text-gray-600 leading-relaxed">{p.projects.cocaCola.impact}</p>
                 </div>
