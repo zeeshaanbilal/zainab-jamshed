@@ -45,13 +45,12 @@ export default async function RootLayout({
         <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md shadow-sm">
           <nav className="flex h-20 w-full items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-12">
             {/* Logo */}
-            <div className="flex items-center cursor-pointer transition-transform hover:scale-105">
+            <Link href={`/${resolvedParams.lang}`} className="flex items-center cursor-pointer transition-transform hover:scale-105">
               <img src="/logo.png" alt="ZJ Logix" className="h-12 w-auto object-contain" />
-            </div>
+            </Link>
 
             {/* Nav Links */}
             <div className="hidden lg:flex items-center gap-5 xl:gap-8 text-base xl:text-lg font-medium text-gray-700">
-              <Link href={`/${resolvedParams.lang}`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.home}</Link>
               <Link href={`/${resolvedParams.lang}/about`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.aboutUs}</Link>
               <div className="relative group">
                 <Link href={`/${resolvedParams.lang}/services`} className="flex items-center gap-1 hover:text-[#7749F8] transition-colors py-6 -my-6">
@@ -72,12 +71,19 @@ export default async function RootLayout({
                 </div>
               </div>
               <Link href={`/${resolvedParams.lang}/blogs`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.blogs}</Link>
+              <Link href={`/${resolvedParams.lang}/portfolio`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.portfolio}</Link>
               <Link href={`/${resolvedParams.lang}/contact`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.contactUs}</Link>
             </div>
 
             {/* Right Side Controls */}
             <div className="flex items-center gap-6 xl:gap-8 ml-auto lg:ml-4">
-              <div className="hidden lg:flex items-center">
+              <div className="hidden lg:flex items-center gap-4">
+                <a 
+                  href="https://analyzer.zjlogix.com/" 
+                  className="px-4 py-2 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm text-sm"
+                >
+                  Spreadsheet Analyzer
+                </a>
                 <BookingButtonClient text={dict.navbar.bookConsultation} />
               </div>
               <LanguageSwitcher />

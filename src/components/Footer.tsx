@@ -82,10 +82,11 @@ export default function Footer({ footer }: { footer: FooterDict }) {
           {/* Column 4: Support */}
           <div className="lg:col-span-2">
             <h3 className="text-white font-extrabold text-[20px] mb-6">{footer.support}</h3>
-            <ul className="flex flex-col gap-4">
-              <li><Link href={`/${lang}`} className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.memberFaq}</Link></li>
-              <li><Link href={`/${lang}/contact`} className="text-white hover:text-[#7749F8] text-[16px] font-medium transition-colors">{footer.contactUs}</Link></li>
-            </ul>
+              <ul className="space-y-4">
+                <li><Link href={`/${lang}/about`} className="text-gray-300 hover:text-white transition-colors">{footer.aboutUs}</Link></li>
+                <li><Link href={`/${lang}/portfolio`} className="text-gray-300 hover:text-white transition-colors">{footer.portfolio}</Link></li>
+                <li><Link href={`/${lang}/contact`} className="text-gray-300 hover:text-white transition-colors">{footer.contactUs}</Link></li>
+              </ul>
           </div>
         </div>
 

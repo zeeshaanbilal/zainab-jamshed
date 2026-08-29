@@ -329,6 +329,20 @@ export default async function Home({ params }: { params: { lang: string } | Prom
         </div>
       </section>
 
+      {/* Trusted By / Clients Section */}
+      <section className="w-full bg-[#fcfcfc] py-16 border-t border-b border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-gray-400 mb-8">
+            Trusted by Industry Leaders
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
+            <img src="/cola-next.png" alt="Cola Next" className="h-12 md:h-16 object-contain" />
+            <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-12 md:h-16 object-contain" />
+            <img src="/nfl.png" alt="NFL" className="h-12 md:h-16 object-contain" />
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="w-full bg-white py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">

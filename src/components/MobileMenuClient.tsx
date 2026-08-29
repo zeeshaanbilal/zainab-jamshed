@@ -45,7 +45,6 @@ export default function MobileMenuClient({ dict, lang }: { dict: any, lang: stri
               </div>
 
               <div className="flex flex-col py-4 px-6 space-y-4 font-medium text-gray-700">
-                <Link href={`/${lang}`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.home}</Link>
                 <Link href={`/${lang}/about`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.aboutUs}</Link>
                 
                 <div className="flex flex-col space-y-3">
@@ -69,10 +68,17 @@ export default function MobileMenuClient({ dict, lang }: { dict: any, lang: stri
                 </div>
 
                 <Link href={`/${lang}/blogs`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.blogs}</Link>
+                <Link href={`/${lang}/portfolio`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.portfolio}</Link>
                 <Link href={`/${lang}/contact`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.contactUs}</Link>
               </div>
 
               <div className="mt-auto p-6 flex flex-col space-y-4 border-t border-gray-100 shrink-0">
+                <a 
+                  href="https://analyzer.zjlogix.com/" 
+                  className="w-full flex items-center justify-center px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+                >
+                  Spreadsheet Analyzer
+                </a>
                 <BookingButtonClient isMobile={true} text={dict.navbar.bookConsultation} />
               </div>
             </div>

@@ -140,6 +140,7 @@ const dictionaries = {
       support: "Support",
       memberFaq: "Member FAQ",
       contactUs: "Contact Us",
+      portfolio: "Portfolio",
       allRightsReserved: "All rights reserved.",
       developedBy: "Developed by"
     },
@@ -154,6 +155,7 @@ const dictionaries = {
       churnAnalysis: "Churn Analysis",
       monteCarlo: "Monte Carlo Simulation",
       blogs: "Blogs",
+      portfolio: "Portfolio",
       contactUs: "Contact Us",
       bookConsultation: "Book Free Consultation"
     },
@@ -422,7 +424,49 @@ const dictionaries = {
                   "Scenario Planning & Mitigation Strategies"
             ]
       }
-}
+    },
+    portfolioPage: {
+      hero: {
+        title: "Our Portfolio",
+        subtitle: "Real-world impact. See how we transform operational complexity into measurable growth.",
+        breadcrumbsHome: "Home",
+        breadcrumbsPortfolio: "Portfolio"
+      },
+      projects: {
+        mezan: {
+          title: "Mezan Beverages (Cola Next)",
+          subtitle: "Route-to-Market & FMCG Supply Chain Optimization Engine",
+          overview: "As one of Pakistan's prominent domestic beverage producers, scaling national operations requires managing extreme demand volatility, regional logistics friction, and high-frequency retail replenishment. To transition from reactive dispatching to high-efficiency distribution planning, an integrated Demand Forecasting & Route-to-Market Optimization Framework was architected. By harmonizing distributor sales logs, secondary order data, and regional bottling constraints, the solution delivers accurate production scheduling and minimizes trade stockouts across tier-1 cities and rural distribution corridors.",
+          methodologyTitle: "Core Engineering & Methodology",
+          methodologyList: [
+            "**High-Resolution Secondary Demand Forecasting**: Built multi-tier regression and time-series pipelines incorporating distributor order history, regional temperature shifts, festival demand spikes, and promotional uplift.",
+            "**Distributor Route & Fleet Allocation**: Formulated vehicle routing and load-optimization models to maximize truck utilization across plant-to-depot and depot-to-distributor transit.",
+            "**Returnable Glass Bottle (RGB) & PET Cycle Tracking**: Modeled reverse logistics loops and dynamic buffer thresholds for returnable glass packaging and raw preforms.",
+            "**Trade Inventory Balancing**: Designed automated buffer stock calculation models across regional transit hubs to maintain high distributor service levels."
+          ],
+          techStackTitle: "Frameworks & Architecture",
+          techStack: "Data ingestion pipelines and transaction harmonization were engineered using Python (Polars, Pandas). Advanced time-series forecasting utilized LightGBM, XGBoost, and Statsmodels. Fleet routing optimization was solved via linear and mixed-integer programming using SciPy Optimize and PuLP.",
+          impactTitle: "Business & Decision Impact",
+          impact: "Transformed distribution logistics into an agile, data-driven supply chain network. The platform curtailed localized out-of-stock events during peak seasonal periods, boosted vehicle fleet capacity utilization, and provided commercial leadership with a mathematically sound foundation for regional market expansion."
+        },
+        bayer: {
+          title: "Bayer Pharmaceuticals",
+          subtitle: "Stochastic Scenario Simulation & Clinical Decision Modeling Engine",
+          overview: "Late-stage pharmaceutical research operates under severe operational and biological volatility. Unforeseen patient dropout rates, non-linear safety signals, and supply chain disruptions can result in multimillion-dollar budget overruns. To provide clinical leadership with proactive risk intelligence, an advanced Stochastic Scenario Simulation & Decision Engine was architected, executing thousands of parallel trial iterations to evaluate protocol feasibility and risk boundaries prior to site activation.",
+          methodologyTitle: "Core Engineering & Methodology",
+          methodologyList: [
+            "**Monte Carlo Trial Trajectory Simulation**: Designed a stochastic simulation framework executing 10,000+ iterations per trial protocol to project patient enrollment curves and dropout distributions.",
+            "**Adverse Event & Safety Signal Testing**: Simulated synthetic patient cohorts to stress-test statistical detection thresholds for rare adverse events.",
+            "**Dynamic Protocol Amendment & Stress Testing**: Built scenario-modeling modules enabling clinical directors to test operational variables and observe downstream statistical power and cost impacts in real time.",
+            "**Supply Chain & IMP Demand Simulation**: Modeled global investigational drug inventory flows against variable patient recruitment rates."
+          ],
+          techStackTitle: "Frameworks & Architecture",
+          techStack: "Core simulation algorithms were developed in Python (NumPy, SciPy, SimPy) alongside R for high-speed statistical sampling. Data ingestion from historical trial repositories was handled via SQL-driven ETL pipelines adhering to CDISC standards. Outputs were deployed into an interactive scenario dashboard for executive review boards.",
+          impactTitle: "Business & Decision Impact",
+          impact: "Replaced static, single-point trial planning spreadsheets with a probabilistic decision-intelligence platform. Empowered clinical development teams to de-risk trial protocols before execution, optimize site allocation, reduce drug waste, and safeguard timelines against critical bottlenecks."
+        }
+      }
+    }
   }),
   pt: () => Promise.resolve({
     hero: {
@@ -564,6 +608,7 @@ const dictionaries = {
       support: "Suporte",
       memberFaq: "FAQ de Membros",
       contactUs: "Contate-nos",
+      portfolio: "Portfólio",
       allRightsReserved: "Todos os direitos reservados.",
       developedBy: "Desenvolvido por"
     },
@@ -578,6 +623,7 @@ const dictionaries = {
       churnAnalysis: "Análise de Churn",
       monteCarlo: "Simulação Monte Carlo",
       blogs: "Blogs",
+      portfolio: "Portfólio",
       contactUs: "Contate-nos",
       bookConsultation: "Agende uma consulta gratuita"
     },
@@ -846,10 +892,54 @@ const dictionaries = {
                   "Planejamento de Cenários e Estratégias de Mitigação"
             ]
       }
-}
+    },
+    portfolioPage: {
+      hero: {
+        title: "Nosso Portfólio",
+        subtitle: "Impacto no mundo real. Veja como transformamos a complexidade operacional em crescimento mensurável.",
+        breadcrumbsHome: "Início",
+        breadcrumbsPortfolio: "Portfólio"
+      },
+      projects: {
+        mezan: {
+          title: "Mezan Beverages (Cola Next)",
+          subtitle: "Mecanismo de Otimização de Cadeia de Suprimentos FMCG e Route-to-Market",
+          overview: "Como um dos principais produtores de bebidas do Paquistão, o dimensionamento das operações nacionais requer o gerenciamento da extrema volatilidade da demanda, do atrito logístico regional e do reabastecimento de varejo de alta frequência. Para fazer a transição do despacho reativo para o planejamento de distribuição de alta eficiência, foi desenvolvida uma Estrutura Integrada de Previsão de Demanda e Otimização de Route-to-Market. Ao harmonizar os registros de vendas dos distribuidores, os dados de pedidos secundários e as restrições regionais de engarrafamento, a solução oferece um cronograma de produção preciso e minimiza a falta de estoque comercial nas cidades de primeiro nível e nos corredores de distribuição rural.",
+          methodologyTitle: "Engenharia Central e Metodologia",
+          methodologyList: [
+            "**Previsão de Demanda Secundária de Alta Resolução**: Criação de pipelines de regressão e série temporal em várias camadas, incorporando histórico de pedidos do distribuidor, mudanças regionais de temperatura, picos de demanda em festivais e aumento promocional.",
+            "**Rota de Distribuidor e Alocação de Frota**: Formulação de modelos de roteamento de veículos e otimização de carga para maximizar a utilização de caminhões no trânsito planta a depósito e depósito a distribuidor.",
+            "**Rastreamento de Ciclo de Garrafas de Vidro Retornáveis (RGB) e PET**: Modelagem de loops de logística reversa e limites dinâmicos de buffer para embalagens de vidro retornáveis e pré-formas brutas.",
+            "**Balanceamento de Estoque Comercial**: Projeto de modelos automatizados de cálculo de estoque de buffer em hubs de trânsito regionais para manter altos níveis de serviço ao distribuidor."
+          ],
+          techStackTitle: "Frameworks e Arquitetura",
+          techStack: "Os pipelines de ingestão de dados e a harmonização de transações foram projetados usando Python (Polars, Pandas). A previsão avançada de séries temporais utilizou LightGBM, XGBoost e Statsmodels. A otimização de roteamento de frota foi resolvida por meio de programação linear e inteira mista usando SciPy Optimize e PuLP.",
+          impactTitle: "Impacto nos Negócios e Decisões",
+          impact: "Transformou a logística de distribuição em uma rede de cadeia de suprimentos ágil e orientada por dados. A plataforma reduziu os eventos de falta de estoque localizados durante os períodos de pico sazonais, aumentou a utilização da capacidade da frota de veículos e forneceu à liderança comercial uma base matematicamente sólida para expansão do mercado regional."
+        },
+        bayer: {
+          title: "Bayer Pharmaceuticals",
+          subtitle: "Mecanismo de Simulação Estocástica de Cenários e Modelagem de Decisões Clínicas",
+          overview: "A pesquisa farmacêutica em estágio final opera sob severa volatilidade operacional e biológica. Taxas imprevistas de abandono de pacientes, sinais de segurança não lineares e interrupções na cadeia de suprimentos podem resultar em estouros orçamentários multimilionários. Para fornecer inteligência de risco proativa à liderança clínica, um avançado Mecanismo de Simulação Estocástica de Cenários e Decisão foi arquitetado, executando milhares de iterações de ensaios paralelos para avaliar a viabilidade do protocolo e limites de risco antes da ativação do local.",
+          methodologyTitle: "Engenharia Central e Metodologia",
+          methodologyList: [
+            "**Simulação de Trajetória de Ensaio de Monte Carlo**: Projeto de uma estrutura de simulação estocástica executando mais de 10.000 iterações por protocolo de ensaio para projetar curvas de inscrição de pacientes e distribuições de desistência.",
+            "**Testes de Eventos Adversos e Sinais de Segurança**: Simulação de coortes sintéticas de pacientes para testar limites de detecção estatística para eventos adversos raros.",
+            "**Alteração Dinâmica de Protocolo e Testes de Estresse**: Criação de módulos de modelagem de cenários que permitem aos diretores clínicos testar variáveis operacionais e observar os impactos estatísticos e de custo em tempo real.",
+            "**Simulação de Cadeia de Suprimentos e Demanda de IMP**: Modelagem de fluxos globais de estoque de medicamentos experimentais em relação às taxas variáveis de recrutamento de pacientes."
+          ],
+          techStackTitle: "Frameworks e Arquitetura",
+          techStack: "Os algoritmos de simulação principais foram desenvolvidos em Python (NumPy, SciPy, SimPy) juntamente com R para amostragem estatística de alta velocidade. A ingestão de dados de repositórios de ensaios históricos foi gerenciada por pipelines de ETL baseados em SQL, aderindo aos padrões CDISC. Os resultados foram implementados em um painel interativo de cenários para painéis de revisão executiva.",
+          impactTitle: "Impacto nos Negócios e Decisões",
+          impact: "Substituiu as planilhas estáticas de planejamento de ensaios de ponto único por uma plataforma probabilística de inteligência de decisão. Capacitou as equipes de desenvolvimento clínico a reduzir os riscos dos protocolos de ensaios antes da execução, otimizar a alocação do local, reduzir o desperdício de medicamentos e proteger os cronogramas contra gargalos críticos."
+        }
+      }
+    }
   })
 };
 
+export type Dictionary = Awaited<ReturnType<typeof dictionaries.en>>;
+
 export const getDictionary = async (locale: string) => {
-  return dictionaries[locale as keyof typeof dictionaries]?.() ?? dictionaries.en();
+  return locale === 'pt' ? dictionaries.pt() : dictionaries.en();
 };
