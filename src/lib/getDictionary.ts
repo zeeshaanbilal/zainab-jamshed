@@ -927,7 +927,7 @@ const dictionaries = {
       }
     },
     portfolioPage: {
-        overviewTitle: "Resumo Executivo",
+      overviewTitle: "Visão Geral Executiva",
         hero: {
         title: "Nosso Portfólio",
         subtitle: "Impacto no mundo real. Veja como transformamos a complexidade operacional em crescimento mensurável.",
