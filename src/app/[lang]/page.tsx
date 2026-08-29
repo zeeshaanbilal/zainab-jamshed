@@ -339,7 +339,7 @@ export default async function Home({ params }: { params: { lang: string } | Prom
             <img src="/cola-next.png" alt="Cola Next" className="h-12 md:h-16 object-contain" />
             <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-12 md:h-16 object-contain" />
             <img src="/nfl.png" alt="NFL" className="h-12 md:h-16 object-contain" />
-            <img src="/coca-cola.png" alt="The Coca-Cola Company" className="h-12 md:h-16 object-contain" />
+            <img src="/cola-next.png" alt="The Coca-Cola Company" className="h-12 md:h-16 object-contain" />
           </div>
         </div>
       </section>
