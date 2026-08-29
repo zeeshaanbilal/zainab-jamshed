@@ -20,6 +20,7 @@ type FooterDict = {
   support: string;
   memberFaq: string;
   contactUs: string;
+  portfolio: string;
   allRightsReserved: string;
   developedBy: string;
 };
