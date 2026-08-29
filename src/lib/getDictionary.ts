@@ -999,5 +999,13 @@ cocaCola: {
             impactTitle: "Impacto nos Negócios e Decisões",
             impact: "Substituiu planilhas herdadas fragmentadas por um sistema de planejamento unificado e baseado em dados. A solução gerou reduções mensuráveis na variância de erros de previsão, reduziu rupturas de estoque localizadas durante os períodos de pico de promoção de verão e feriados, e liberou economias significativas de capital de giro otimizando os limites de manutenção do armazém."
           }
-        
-  
+        }
+      }
+    })
+};
+
+export type Dictionary = Awaited<ReturnType<typeof dictionaries.en>>;
+
+export const getDictionary = async (locale: string) => {
+  return locale === 'pt' ? dictionaries.pt() : dictionaries.en();
+};
