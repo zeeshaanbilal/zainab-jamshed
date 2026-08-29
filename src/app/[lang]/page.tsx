@@ -338,7 +338,7 @@ export default async function Home({ params }: { params: { lang: string } | Prom
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
             <img src="/hyena.png" alt="Hyena" className="h-10 md:h-14 w-auto object-contain mix-blend-multiply" />
             <img src="/kicker.png" alt="Kicker" className="h-10 md:h-14 w-auto object-contain mix-blend-multiply" />
-            <img src="/meezan.png" alt="Meezan Bank" className="h-10 md:h-14 w-auto object-contain mix-blend-multiply" />
+            <img src="/mezan.png" alt="Mezan" className="h-10 md:h-14 w-auto object-contain mix-blend-multiply" />
             <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-10 md:h-14 w-auto object-contain mix-blend-multiply" />
             <img src="/nfl.png" alt="NFL" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
             <img src="/coca-cola.png" alt="The Coca-Cola Company" className="h-10 md:h-14 w-auto object-contain mix-blend-multiply" />
