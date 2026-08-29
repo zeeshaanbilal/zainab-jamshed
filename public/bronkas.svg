@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="8" fill="transparent"/>
+  <path d="M20 15H40V45H20V15Z" fill="#59168B"/>
+  <path d="M30 15L45 30L30 45" stroke="#59168B" stroke-width="4" fill="none"/>
+  <text x="60" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">Bronkas</text>
+</svg>

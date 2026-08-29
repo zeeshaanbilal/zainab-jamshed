@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="8" fill="transparent"/>
+  <path d="M20 45L30 15L40 45" stroke="#7749F8" stroke-width="4" fill="none"/>
+  <path d="M25 35H35" stroke="#7749F8" stroke-width="4"/>
+  <text x="55" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">Kickstart</text>
+</svg>

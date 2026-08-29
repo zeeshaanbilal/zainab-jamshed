@@ -336,10 +336,13 @@ export default async function Home({ params }: { params: { lang: string } | Prom
             Trusted by Industry Leaders
           </p>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
-            <img src="/meezan.png" alt="Meezan Bank" className="h-10 md:h-14 object-contain" />
-            <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-10 md:h-14 object-contain" />
-            <img src="/nfl.png" alt="NFL" className="h-12 md:h-16 object-contain" />
-            <img src="/coca-cola.png" alt="The Coca-Cola Company" className="h-10 md:h-14 object-contain" />
+            <img src="/meezan.png" alt="Meezan Bank" className="h-10 md:h-14 w-auto object-contain" />
+            <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-10 md:h-14 w-auto object-contain" />
+            <img src="/nfl.png" alt="NFL" className="h-12 md:h-16 w-auto object-contain" />
+            <img src="/coca-cola.png" alt="The Coca-Cola Company" className="h-10 md:h-14 w-auto object-contain" />
+            <img src="/startup.svg" alt="Startup" className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="/bronkas.svg" alt="Bronkas" className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="/kickstart.svg" alt="Kickstart" className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
           </div>
         </div>
       </section>
