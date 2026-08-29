@@ -426,6 +426,7 @@ const dictionaries = {
       }
     },
     portfolioPage: {
+      overviewTitle: "Executive Overview",
       hero: {
         title: "Our Portfolio",
         subtitle: "Real-world impact. See how we transform operational complexity into measurable growth.",
@@ -926,7 +927,8 @@ const dictionaries = {
       }
     },
     portfolioPage: {
-      hero: {
+        overviewTitle: "Resumo Executivo",
+        hero: {
         title: "Nosso Portfólio",
         subtitle: "Impacto no mundo real. Veja como transformamos a complexidade operacional em crescimento mensurável.",
         breadcrumbsHome: "Início",
@@ -966,44 +968,36 @@ const dictionaries = {
           impact: "Substituiu as planilhas estáticas de planejamento de ensaios de ponto único por uma plataforma probabilística de inteligência de decisão. Capacitou as equipes de desenvolvimento clínico a reduzir os riscos dos protocolos de ensaios antes da execução, otimizar a alocação do local, reduzir o desperdício de medicamentos e proteger os cronogramas contra gargalos críticos."
         },
         nfl: {
-          title: "National Football League (NFL)",
-          subtitle: "Monte Carlo Simulation & Player Performance Analytics Engine",
-          overview: "Standard projection models evaluate athletes in isolation, failing to capture the interconnected variance inherent in professional football. To solve this, a high-throughput Monte Carlo simulation framework was architected to simulate tens of thousands of game-state trajectories. By integrating multi-variable historical datasets and cross-player correlation matrices, the platform transforms uncertain game conditions into quantifiable probability distributions and actionable risk profiles.",
-          methodologyTitle: "Engenharia Central e Metodologia",
-          methodologyList: [
-            "**Correlated Multivariate Modeling**: Formulated covariance and correlation engines to account for intra-team dependencies (e.g., QB-WR yardage coupling) and opponent defensive suppression, preventing skewed baseline estimates.",
-            "**Stochastic Simulation Architecture**: Deployed Monte Carlo algorithms executing 10,000+ iterations per matchup to map full-range upside, floor risk, and outcome tail-probabilities across key performance indicators.",
-            "**Proprietary Scaling & Normalization Engine**: Developed a unified scoring algorithm that normalizes heterogeneous position metrics onto a standardized scale, enabling cross-position performance parity analysis.",
-            "**Dynamic Scenario & Risk Profiling**: Quantified outcome dispersion to provide decision-makers with confidence intervals, median expected value, and volatility indexes rather than static, single-point estimates."
-          ],
-          techStackTitle: "Frameworks e Arquitetura",
-          techStack: "The high-throughput Monte Carlo simulation framework was developed using Python (NumPy, SciPy) for stochastic modeling and mathematical optimization.",
-          impactTitle: "Impacto nos Negócios e Decisões",
-          impact: "Replaced flat, error-prone projection spreadsheets with a mathematically rigorous decision-intelligence system. The platform delivers institutional-grade probabilistic forecasts, enabling analysts and executives to evaluate downside risk, target high-upside variance, and execute data-driven game planning."
-        },
-        cocaCola: {
-          title: "The Coca-Cola Company",
-          subtitle: "Predictive Demand Forecasting & Supply Chain Optimization Engine",
-          overview: "Global beverage supply chains face extreme operational variance driven by regional seasonality, promotional spikes, macroeconomic shifts, and raw material lead-time fluctuations. To eliminate costly stockouts and reduce finished-goods holding costs, a scalable Predictive Demand & Supply Chain Optimization Framework was developed. By consolidating disparate ERP datasets, point-of-sale (POS) data, and external market signals, the platform automates demand sensing and translates multi-tier constraints into deterministic replenishment schedules.",
-          methodologyTitle: "Engenharia Central e Metodologia",
-          methodologyList: [
-            "**Hierarchical Time-Series Forecasting**: Built multi-level time-series algorithms reconciling top-down national demand targets with bottom-up SKU and bottling-plant forecasts, maintaining mathematical consistency across every operational tier.",
-            "**Causal Feature Engineering & Demand Sensing**: Integrated exogenous factors—including localized weather patterns, retail promotional calendars, regional demographic trends, and distributor lead times—to capture non-linear demand shifts.",
-            "**Safety Stock & Inventory Optimization**: Modeled service-level curves against supply lead-time volatility to calculate dynamic buffer stock levels, avoiding working-capital lockup while maintaining a 98%+ on-shelf availability target.",
-            "**Scenario Planning & What-If Simulation**: Architected a simulation module allowing supply chain executives to model stress scenarios, such as sudden supplier disruptions, transportation bottleneck shifts, and raw ingredient price shocks."
-          ],
-          techStackTitle: "Frameworks e Arquitetura",
-          techStack: "The end-to-end data pipeline was constructed using Python (Pandas, Polars, and NumPy) for high-throughput data manipulation and automated data-cleaning workflows across millions of daily transactional records. Advanced time-series forecasting and regression modeling were implemented using Prophet, LightGBM, and Statsmodels, paired with Scikit-Learn for feature transformation and cross-validation pipelines. To solve constrained supply allocation and route-to-market distribution challenges, mathematical optimization was driven by linear and mixed-integer linear programming (MILP) using SciPy Optimize and PuLP. Data ingestion, warehouse orchestration, and transformation were managed through SQL and scalable ETL pipelines, with final analytical outputs and dynamic scenario simulators deployed via interactive enterprise executive dashboards.",
-          impactTitle: "Impacto nos Negócios e Decisões",
-          impact: "Replaced fragmented legacy spreadsheets with a unified, data-driven planning system. The solution drove measurable reductions in forecast error variance, curtailed localized stockouts during peak summer and holiday promotion periods, and unlocked significant working capital savings by optimizing warehouse holding thresholds."
-        }
-      }
-    }
-  })
-};
-
-export type Dictionary = Awaited<ReturnType<typeof dictionaries.en>>;
-
-export const getDictionary = async (locale: string) => {
-  return locale === 'pt' ? dictionaries.pt() : dictionaries.en();
-};
+            title: "National Football League (NFL)",
+            subtitle: "Simulação de Monte Carlo e Mecanismo de Análise de Desempenho de Jogadores",
+            overview: "Modelos de projeção padrão avaliam atletas isoladamente, falhando em capturar a variância interconectada inerente ao futebol profissional. Para resolver isso, uma estrutura de simulação de Monte Carlo de alto rendimento foi projetada para simular dezenas de milhares de trajetórias de estado de jogo. Ao integrar conjuntos de dados históricos multivariáveis e matrizes de correlação entre jogadores, a plataforma transforma condições de jogo incertas em distribuições de probabilidade quantificáveis e perfis de risco acionáveis.",
+            methodologyTitle: "Engenharia Central e Metodologia",
+            methodologyList: [
+              "**Modelagem Multivariada Correlacionada**: Criação de mecanismos de covariância e correlação para contabilizar dependências entre equipes (ex: acoplamento de jardas QB-WR) e supressão defensiva adversária, evitando estimativas de linha de base distorcidas.",
+              "**Arquitetura de Simulação Estocástica**: Implantação de algoritmos de Monte Carlo executando mais de 10.000 iterações por partida para mapear vantagens de alcance total, risco mínimo e probabilidades de cauda de resultados nos principais indicadores de desempenho.",
+              "**Mecanismo de Escalonamento e Normalização**: Desenvolvimento de um algoritmo de pontuação unificado que normaliza métricas de posições heterogêneas em uma escala padronizada, permitindo análise de paridade de desempenho entre posições.",
+              "**Cenário Dinâmico e Perfil de Risco**: Quantificação da dispersão de resultados para fornecer aos tomadores de decisão intervalos de confiança, valor esperado médio e índices de volatilidade em vez de estimativas estáticas e pontuais."
+            ],
+            techStackTitle: "Frameworks e Arquitetura",
+            techStack: "A estrutura de simulação de Monte Carlo de alto rendimento foi desenvolvida usando Python (NumPy, SciPy) para modelagem estocástica e otimização matemática.",
+            impactTitle: "Impacto nos Negócios e Decisões",
+            impact: "Substituiu planilhas de projeção lineares e propensas a erros por um sistema de inteligência de decisão matematicamente rigoroso. A plataforma fornece previsões probabilísticas de nível institucional, permitindo que analistas e executivos avaliem riscos de queda, visem variâncias de alta vantagem e executem planejamento de jogos baseado em dados."
+          },
+cocaCola: {
+            title: "The Coca-Cola Company",
+            subtitle: "Mecanismo Preditivo de Previsão de Demanda e Otimização da Cadeia de Suprimentos",
+            overview: "As cadeias de suprimentos globais de bebidas enfrentam extrema variância operacional impulsionada por sazonalidade regional, picos promocionais, mudanças macroeconômicas e flutuações no tempo de entrega de matérias-primas. Para eliminar rupturas de estoque dispendiosas e reduzir custos de manutenção de produtos acabados, foi desenvolvida uma Estrutura Preditiva de Demanda e Otimização da Cadeia de Suprimentos escalonável. Ao consolidar conjuntos de dados ERP díspares, dados de ponto de venda (POS) e sinais de mercado externos, a plataforma automatiza a percepção da demanda e traduz restrições de várias camadas em cronogramas de reabastecimento determinísticos.",
+            methodologyTitle: "Engenharia Central e Metodologia",
+            methodologyList: [
+              "**Previsão Hierárquica de Séries Temporais**: Criação de algoritmos de séries temporais multinível reconciliando metas de demanda nacional de cima para baixo com previsões de fábricas de engarrafamento e SKUs de baixo para cima, mantendo a consistência matemática em cada nível operacional.",
+              "**Engenharia de Recursos Causais e Percepção de Demanda**: Fatores exógenos integrados — incluindo padrões climáticos localizados, calendários promocionais de varejo, tendências demográficas regionais e prazos de entrega do distribuidor — para capturar mudanças não lineares de demanda.",
+              "**Estoque de Segurança e Otimização de Estoque**: Modelagem de curvas de nível de serviço em relação à volatilidade do lead time de suprimento para calcular níveis dinâmicos de estoque de buffer, evitando o bloqueio de capital de giro enquanto mantém uma meta de disponibilidade na prateleira de mais de 98%.",
+              "**Planejamento de Cenário e Simulação E se**: Arquitetou um módulo de simulação permitindo que executivos da cadeia de suprimentos modelem cenários de estresse, como interrupções repentinas de fornecedores, mudanças em gargalos de transporte e choques de preços de ingredientes crus."
+            ],
+            techStackTitle: "Frameworks e Arquitetura",
+            techStack: "O pipeline de dados de ponta a ponta foi construído usando Python (Pandas, Polars e NumPy) para manipulação de dados de alto rendimento e fluxos de trabalho automatizados de limpeza de dados em milhões de registros transacionais diários. Modelagem de regressão e previsão de série temporal avançada foram implementadas usando Prophet, LightGBM e Statsmodels, combinadas com Scikit-Learn para transformação de recursos e pipelines de validação cruzada. Para resolver desafios de distribuição de mercado e alocação de suprimentos restritos, a otimização matemática foi conduzida por programação linear e programação linear inteira mista (MILP) usando SciPy Optimize e PuLP. A ingestão de dados, a orquestração de data warehouse e a transformação foram gerenciadas por meio de SQL e pipelines de ETL escalonáveis, com resultados analíticos finais e simuladores de cenário dinâmicos implementados por meio de painéis executivos empresariais interativos.",
+            impactTitle: "Impacto nos Negócios e Decisões",
+            impact: "Substituiu planilhas herdadas fragmentadas por um sistema de planejamento unificado e baseado em dados. A solução gerou reduções mensuráveis na variância de erros de previsão, reduziu rupturas de estoque localizadas durante os períodos de pico de promoção de verão e feriados, e liberou economias significativas de capital de giro otimizando os limites de manutenção do armazém."
+          }
+        
+  

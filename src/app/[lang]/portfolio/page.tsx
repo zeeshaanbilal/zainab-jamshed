@@ -64,7 +64,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
             
             <div className="w-full lg:w-2/3 space-y-10">
               <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
-                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">Executive Overview</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">{p.overviewTitle}</h4>
                 <p className="text-gray-600 text-lg leading-relaxed">{p.projects.mezan.overview}</p>
               </div>
               
@@ -111,7 +111,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
             
             <div className="w-full lg:w-2/3 space-y-10">
               <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
-                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">Executive Overview</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">{p.overviewTitle}</h4>
                 <p className="text-gray-600 text-lg leading-relaxed">{p.projects.bayer.overview}</p>
               </div>
               
@@ -156,7 +156,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
             
             <div className="w-full lg:w-2/3 space-y-10">
               <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
-                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">Executive Overview</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">{p.overviewTitle}</h4>
                 <p className="text-gray-600 text-lg leading-relaxed">{p.projects.nfl.overview}</p>
               </div>
               
@@ -202,7 +202,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
             
             <div className="w-full lg:w-2/3 space-y-10">
               <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
-                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">Executive Overview</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-100">{p.overviewTitle}</h4>
                 <p className="text-gray-600 text-lg leading-relaxed">{p.projects.cocaCola.overview}</p>
               </div>
               
