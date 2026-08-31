@@ -336,12 +336,12 @@ export default async function Home({ params }: { params: { lang: string } | Prom
             Trusted by Industry Leaders
           </p>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
-            <img src="/hyena.png" alt="Hyena" className="h-14 md:h-20 w-auto object-contain mix-blend-multiply" />
-            <img src="/kicker.png" alt="Kicker" className="h-14 md:h-20 w-auto object-contain mix-blend-multiply" />
-            <img src="/mezan.png" alt="Mezan" className="h-14 md:h-20 w-auto object-contain mix-blend-multiply" />
-            <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-14 md:h-20 w-auto object-contain mix-blend-multiply" />
-            <img src="/nfl.png" alt="NFL" className="h-16 md:h-24 w-auto object-contain mix-blend-multiply" />
-            <img src="/coca-cola.png" alt="The Coca-Cola Company" className="h-14 md:h-20 w-auto object-contain mix-blend-multiply" />
+            <img src="/hyena.png" alt="Hyena" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
+            <img src="/kicker.png" alt="Kicker" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
+            <img src="/mezan.png" alt="Mezan" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
+            <img src="/bayer.png" alt="Bayer Pharmaceuticals" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
+            <img src="/nfl.png" alt="NFL" className="h-14 md:h-20 w-auto object-contain mix-blend-multiply" />
+            <img src="/coca-cola.png" alt="The Coca-Cola Company" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
           </div>
         </div>
       </section>
