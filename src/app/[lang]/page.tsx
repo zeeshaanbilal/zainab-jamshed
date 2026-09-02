@@ -3,7 +3,7 @@ import Link from "next/link";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import FAQAccordion from "@/components/FAQAccordion";
 import ContactSection from "@/components/ContactSection";
-import BookingSection from "@/components/BookingSection";
+
 import Footer from "@/components/Footer";
 import { getDictionary } from "@/lib/getDictionary";
 
@@ -116,8 +116,8 @@ export default async function Home({ params }: { params: { lang: string } | Prom
             {/* Right Image */}
             <div className="relative h-[450px] w-full overflow-hidden rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-[1.02] border border-gray-100 animate-slide-left">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
-                alt="Dashboard on Laptop"
+                src="/dashboard.jpg"
+                alt="Modern Data Analytics Dashboard on Laptop"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -368,7 +368,7 @@ export default async function Home({ params }: { params: { lang: string } | Prom
       <ContactSection contact={dict.contact} />
 
       {/* Booking Section */}
-      <BookingSection booking={dict.booking} />
+      
 
       {/* Footer */}
       <Footer footer={dict.footer} />
