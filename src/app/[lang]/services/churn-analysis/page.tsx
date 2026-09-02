@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getDictionary } from '@/lib/getDictionary';
 import Footer from '@/components/Footer';
-import BookingSection from '@/components/BookingSection';
+
 
 export default async function ChurnAnalysisPage({ params }: { params: { lang: string } | Promise<{ lang: string }> }) {
   const resolvedParams = await Promise.resolve(params);
@@ -99,7 +99,7 @@ export default async function ChurnAnalysisPage({ params }: { params: { lang: st
         </div>
       </section>
 
-      <BookingSection booking={dict.booking} />
+      
       <Footer footer={dict.footer} />
     </div>
   );

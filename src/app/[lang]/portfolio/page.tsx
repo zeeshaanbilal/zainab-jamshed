@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import BookingSection from '@/components/BookingSection';
 import { getDictionary } from '@/lib/getDictionary';
 
 export const metadata = {
@@ -236,7 +235,7 @@ export default async function PortfolioPage({ params }: { params: { lang: string
 </section>
 
       {/* Booking Section */}
-      <BookingSection booking={dict.booking} />
+      
       
       {/* Footer */}
       <Footer footer={dict.footer} />

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import BookingSection from '@/components/BookingSection';
+
 import { getDictionary } from '@/lib/getDictionary';
 
 export default async function ServicesPage({ params }: { params: { lang: string } | Promise<{ lang: string }> }) {
@@ -86,7 +86,7 @@ export default async function ServicesPage({ params }: { params: { lang: string 
         </div>
       </section>
 
-      <BookingSection booking={dict.booking} />
+      
       <Footer footer={dict.footer} />
     </div>
   );

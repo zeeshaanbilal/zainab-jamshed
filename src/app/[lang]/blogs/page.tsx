@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import BookingSection from '@/components/BookingSection';
+
 import BlogListClient from '@/components/BlogListClient';
 import { prisma } from '@/lib/prisma';
 import { getDictionary } from '@/lib/getDictionary';
@@ -71,7 +71,7 @@ export default async function BlogsPage({ params }: { params: { lang: string } |
       </section>
 
       {/* Booking Section */}
-      <BookingSection booking={dict.booking} />
+      
       
       {/* Footer */}
       <Footer footer={dict.footer} />

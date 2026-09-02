@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import BookingSection from '@/components/BookingSection';
+
 import { getDictionary } from '@/lib/getDictionary';
 import type { Metadata } from 'next';
 
@@ -286,7 +286,7 @@ export default async function AboutPage({ params }: { params: { lang: string } |
         </div>
       </section>
 
-      <BookingSection booking={dict.booking} />
+      
       <Footer footer={dict.footer} />
     </div>
   );
