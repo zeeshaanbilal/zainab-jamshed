@@ -28,11 +28,11 @@ export default function MobileMenuClient({ dict, lang }: { dict: any, lang: stri
         require('react-dom').createPortal(
           <>
             <div 
-              className="fixed inset-0 bg-black/50 z-[100] lg:hidden"
+              className="fixed inset-0 bg-black/50 z-[100] xl:hidden"
               onClick={() => setIsOpen(false)}
             />
             <div 
-              className={`fixed top-0 right-0 h-[100dvh] w-[280px] bg-white z-[110] transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col overflow-y-auto ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+              className={`fixed top-0 right-0 h-[100dvh] w-[280px] bg-white z-[110] transform transition-transform duration-300 ease-in-out xl:hidden flex flex-col overflow-y-auto ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-100 shrink-0">
                 <img src="/logo.png" alt="ZJ Logix" className="h-8 w-auto" />

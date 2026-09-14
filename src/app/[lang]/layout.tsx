@@ -50,7 +50,7 @@ export default async function RootLayout({
             </Link>
 
             {/* Nav Links */}
-            <div className="hidden lg:flex items-center gap-5 xl:gap-8 text-base xl:text-lg font-medium text-gray-700">
+            <div className="hidden xl:flex items-center gap-5 xl:gap-8 text-base xl:text-lg font-medium text-gray-700 whitespace-nowrap">
               <Link href={`/${resolvedParams.lang}/about`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.aboutUs}</Link>
               <div className="relative group">
                 <Link href={`/${resolvedParams.lang}/services`} className="flex items-center gap-1 hover:text-[#7749F8] transition-colors py-6 -my-6">
@@ -61,12 +61,12 @@ export default async function RootLayout({
                 {/* Dropdown Menu */}
                 <div className="absolute top-full -left-4 w-[240px] pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="bg-white border border-gray-100 shadow-xl rounded-lg flex flex-col py-1">
-                    <Link href={`/${resolvedParams.lang}/services/business-modeling`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors">{dict.navbar.businessModeling}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/decision-optimization`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors">{dict.navbar.decisionOptimization}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/financial-modeling`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors">{dict.navbar.financialModeling}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/analytics`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors">{dict.navbar.analytics}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/churn-analysis`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors">{dict.navbar.churnAnalysis}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/monte-carlo-simulation`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors">{dict.navbar.monteCarlo}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/business-modeling`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.businessModeling}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/decision-optimization`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.decisionOptimization}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/financial-modeling`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.financialModeling}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/analytics`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.analytics}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/churn-analysis`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.churnAnalysis}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/monte-carlo-simulation`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.monteCarlo}</Link>
                   </div>
                 </div>
               </div>
@@ -76,11 +76,11 @@ export default async function RootLayout({
             </div>
 
             {/* Right Side Controls */}
-            <div className="flex items-center gap-6 xl:gap-8 ml-auto lg:ml-4">
-              <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-6 xl:gap-8 ml-auto xl:ml-4">
+              <div className="hidden xl:flex items-center gap-4">
                 <a 
                   href="https://analyzer.zjlogix.com/" 
-                  className="px-4 py-2 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm text-sm"
+                  className="px-4 py-2 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm text-sm whitespace-nowrap"
                 >
                   Spreadsheet Analyzer
                 </a>
@@ -89,7 +89,7 @@ export default async function RootLayout({
               <LanguageSwitcher />
               
               {/* Mobile Menu - Always visible on the right on mobile */}
-              <div className="lg:hidden flex items-center">
+              <div className="xl:hidden flex items-center">
                 <MobileMenuClient dict={dict} lang={resolvedParams.lang} />
               </div>
             </div>
