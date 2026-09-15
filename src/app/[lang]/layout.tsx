@@ -43,14 +43,14 @@ export default async function RootLayout({
     <html lang={resolvedParams.lang} className={`${inter.variable} ${geistMono.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-indigo-100 selection:text-indigo-900 overflow-x-hidden" suppressHydrationWarning>
         <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md shadow-sm">
-          <nav className="flex h-20 w-full items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-12">
+          <nav className="flex h-20 w-full items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-12">
             {/* Logo */}
-            <Link href={`/${resolvedParams.lang}`} className="flex items-center cursor-pointer transition-transform hover:scale-105">
-              <img src="/logo.png" alt="ZJ Logix" className="h-12 w-auto object-contain" />
+            <Link href={`/${resolvedParams.lang}`} className="flex items-center cursor-pointer transition-transform hover:scale-105 shrink-0 mr-4">
+              <img src="/logo.png" alt="ZJ Logix" className="h-10 xl:h-12 w-auto object-contain" />
             </Link>
 
             {/* Nav Links */}
-            <div className="hidden xl:flex items-center gap-5 xl:gap-8 text-base xl:text-lg font-medium text-gray-700 whitespace-nowrap">
+            <div className="hidden xl:flex items-center gap-4 2xl:gap-8 text-[15px] 2xl:text-lg font-medium text-gray-700 whitespace-nowrap">
               <Link href={`/${resolvedParams.lang}/about`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.aboutUs}</Link>
               <div className="relative group">
                 <Link href={`/${resolvedParams.lang}/services`} className="flex items-center gap-1 hover:text-[#7749F8] transition-colors py-6 -my-6">
@@ -61,12 +61,12 @@ export default async function RootLayout({
                 {/* Dropdown Menu */}
                 <div className="absolute top-full -left-4 w-[240px] pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="bg-white border border-gray-100 shadow-xl rounded-lg flex flex-col py-1">
-                    <Link href={`/${resolvedParams.lang}/services/business-modeling`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.businessModeling}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/decision-optimization`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.decisionOptimization}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/financial-modeling`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.financialModeling}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/analytics`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.analytics}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/churn-analysis`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.churnAnalysis}</Link>
-                    <Link href={`/${resolvedParams.lang}/services/monte-carlo-simulation`} className="px-5 py-2.5 text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.monteCarlo}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/business-modeling`} className="px-5 py-2.5 text-[15px] 2xl:text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.businessModeling}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/decision-optimization`} className="px-5 py-2.5 text-[15px] 2xl:text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.decisionOptimization}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/financial-modeling`} className="px-5 py-2.5 text-[15px] 2xl:text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.financialModeling}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/analytics`} className="px-5 py-2.5 text-[15px] 2xl:text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.analytics}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/churn-analysis`} className="px-5 py-2.5 text-[15px] 2xl:text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.churnAnalysis}</Link>
+                    <Link href={`/${resolvedParams.lang}/services/monte-carlo-simulation`} className="px-5 py-2.5 text-[15px] 2xl:text-[16px] text-gray-600 hover:bg-gray-50 hover:text-[#7749F8] border-b border-gray-100 last:border-0 transition-colors whitespace-normal">{dict.navbar.monteCarlo}</Link>
                   </div>
                 </div>
               </div>
@@ -76,11 +76,11 @@ export default async function RootLayout({
             </div>
 
             {/* Right Side Controls */}
-            <div className="flex items-center gap-6 xl:gap-8 ml-auto xl:ml-4">
-              <div className="hidden xl:flex items-center gap-4">
+            <div className="flex items-center gap-3 2xl:gap-8 ml-auto">
+              <div className="hidden xl:flex items-center gap-3 2xl:gap-4">
                 <a 
                   href="https://analyzer.zjlogix.com/" 
-                  className="px-4 py-2 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm text-sm whitespace-nowrap"
+                  className="px-3 2xl:px-4 py-2 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm text-[13px] 2xl:text-sm whitespace-nowrap"
                 >
                   Spreadsheet Analyzer
                 </a>
