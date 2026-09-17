@@ -323,7 +323,7 @@ export default async function Home({ params }: { params: { lang: string } | Prom
             {/* Card 5 */}
             <div className="flex flex-col items-start justify-between border-2 border-slate-400 rounded-[18px] py-6 px-6 bg-white hover:shadow-md transition-shadow min-h-[140px]">
               <p className="text-slate-400 text-[13px] md:text-sm font-medium animate-slide-down">{dict.whyChooseUs.stat5}</p>
-              <h3 className="text-[#364153] font-bold text-[36px] md:text-[40px] leading-none tracking-tight animate-slide-up" style={{ animationDelay: '0.2s' }}>12+</h3>
+              <h3 className="text-[#364153] font-bold text-[36px] md:text-[40px] leading-none tracking-tight animate-slide-up" style={{ animationDelay: '0.2s' }}>3+</h3>
             </div>
           </div>
         </div>
