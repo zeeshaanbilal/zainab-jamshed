@@ -20,10 +20,15 @@ export default function AdminDashboard({
   const [editingBlog, setEditingBlog] = useState<any | null>(null);
 
   // Research States
+  const [researchList, setResearchList] = useState<any[]>(research);
   const [isAddingResearch, setIsAddingResearch] = useState(false);
   const [editingResearch, setEditingResearch] = useState<any | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [selectedFileSize, setSelectedFileSize] = useState<string | null>(null);
+
+  useEffect(() => {
+    setResearchList(research);
+  }, [research]);
 
   // Handle URL query parameters (e.g. /admin?tab=research&action=new)
   useEffect(() => {
@@ -66,7 +71,8 @@ export default function AdminDashboard({
       const res = await quickUploadPdf(formData);
       if (res?.error) {
         setErrorMsg(res.error);
-      } else {
+      } else if (res?.item) {
+        setResearchList((prev) => [res.item, ...prev]);
         setSuccessMsg(`"${file.name}" uploaded successfully!`);
       }
     } catch (e: any) {
@@ -113,6 +119,7 @@ export default function AdminDashboard({
         if (result?.error) {
           setErrorMsg(result.error);
         } else {
+          setResearchList((prev) => prev.filter((r) => r.id !== id));
           setSuccessMsg('Research publication deleted successfully.');
         }
       } catch (e: any) {
@@ -321,12 +328,16 @@ export default function AdminDashboard({
                   type="button"
                   onClick={() => adminFileInputRef.current?.click()}
                   disabled={isAdminQuickUploading}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-medium transition-colors shadow-sm flex items-center gap-2 cursor-pointer disabled:opacity-60"
+                  className="bg-[#7749F8] hover:bg-[#59168B] text-white px-5 py-2.5 rounded-xl font-medium transition-colors shadow-sm flex items-center gap-2 cursor-pointer disabled:opacity-60"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
-                  </svg>
-                  <span>{isAdminQuickUploading ? 'Uploading...' : 'Upload PDF'}</span>
+                  {isAdminQuickUploading ? (
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
+                    </svg>
+                  )}
+                  <span>{isAdminQuickUploading ? 'Uploading PDF...' : '+ Upload PDF Document'}</span>
                 </button>
               </>
             )}
@@ -364,7 +375,7 @@ export default function AdminDashboard({
           >
             <span>Research & PDFs</span>
             <span className="bg-purple-100 text-[#7749F8] px-2 py-0.5 rounded-full text-xs font-bold">
-              {research.length}
+              {researchList.length}
             </span>
           </button>
           <button
@@ -442,14 +453,14 @@ export default function AdminDashboard({
                 </tr>
               </thead>
               <tbody>
-                {research.map((item) => {
+                {researchList.map((item) => {
                   const pdfLink = item.pdfUrl || `/api/research/${item.slug}/pdf`;
                   return (
                     <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50/50">
                       <td className="p-4">
                         <div className="font-semibold text-gray-900">{item.title}</div>
-                        {item.titlePt && (
-                          <div className="text-xs text-gray-400 mt-0.5">PT: {item.titlePt}</div>
+                        {item.pdfFileName && (
+                          <div className="text-xs text-gray-400 mt-0.5 font-mono">📄 {item.pdfFileName}</div>
                         )}
                       </td>
                       <td className="p-4 text-sm">
@@ -476,18 +487,8 @@ export default function AdminDashboard({
                       </td>
                       <td className="p-4 text-right">
                         <button
-                          onClick={() => {
-                            setEditingResearch(item);
-                            setSelectedFileName(item.pdfFileName || null);
-                            setSelectedFileSize(item.fileSize || null);
-                          }}
-                          className="text-[#7749F8] hover:text-[#59168B] font-medium text-sm mr-4"
-                        >
-                          Edit
-                        </button>
-                        <button
                           onClick={() => handleDeleteResearch(item.id)}
-                          className="text-red-500 hover:text-red-700 font-medium text-sm"
+                          className="text-red-500 hover:text-red-700 font-medium text-sm cursor-pointer"
                         >
                           Delete
                         </button>
@@ -495,10 +496,20 @@ export default function AdminDashboard({
                     </tr>
                   );
                 })}
-                {research.length === 0 && (
+                {researchList.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="p-8 text-center text-gray-500">
-                      No research papers yet. Click &quot;+ Post Research PDF&quot; to upload your first paper!
+                    <td colSpan={5} className="p-10 text-center text-gray-500">
+                      <p className="mb-3 text-base">No research PDF documents uploaded yet.</p>
+                      <button
+                        type="button"
+                        onClick={() => adminFileInputRef.current?.click()}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7749F8] text-white rounded-xl text-sm font-semibold hover:bg-[#59168B] transition-colors shadow-sm cursor-pointer"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
+                        </svg>
+                        Upload PDF Document
+                      </button>
                     </td>
                   </tr>
                 )}
