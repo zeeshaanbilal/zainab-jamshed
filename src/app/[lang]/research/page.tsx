@@ -106,14 +106,28 @@ export default async function ResearchPage({
       {/* Main Content Area */}
       <section className="w-full bg-[#fcfcfc] py-20 px-4 sm:px-6 lg:px-8 flex-1">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-14 flex flex-col items-center text-center animate-slide-down">
-            <h2 className="text-2xl md:text-3xl font-bold uppercase text-[#59168B]">
-              {dict.researchPage.header.title}
-            </h2>
-            <div className="h-[3px] w-16 bg-[#7749F8] mt-3 mb-6 rounded-full"></div>
-            <p className="text-gray-500 max-w-2xl text-base md:text-lg font-medium">
-              {dict.researchPage.header.subtitle}
-            </p>
+          <div className="mb-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pb-6 border-b border-gray-200/80 animate-slide-down">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold uppercase text-[#59168B]">
+                {dict.researchPage.header.title}
+              </h2>
+              <div className="h-[3px] w-16 bg-[#7749F8] mt-3 mb-3 rounded-full"></div>
+              <p className="text-gray-500 max-w-2xl text-base md:text-lg font-medium">
+                {dict.researchPage.header.subtitle}
+              </p>
+            </div>
+
+            <Link
+              href="/admin?tab=research&action=new"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-gradient-to-r from-[#7749F8] to-[#9065FF] hover:from-[#6537E8] hover:to-[#7E51F7] text-white font-bold rounded-2xl shadow-lg shadow-[#7749F8]/25 hover:shadow-[#7749F8]/40 hover:-translate-y-0.5 transition-all text-sm md:text-base shrink-0 group"
+            >
+              <div className="p-1 bg-white/20 rounded-lg group-hover:scale-110 transition-transform">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                </svg>
+              </div>
+              <span>{dict.researchPage.header.postNewPdf || 'Post New PDF'}</span>
+            </Link>
           </div>
 
           <ResearchListClient

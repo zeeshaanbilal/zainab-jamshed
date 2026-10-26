@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createBlog, updateBlog, deleteBlog } from '@/app/actions/blogActions';
 import { createResearch, updateResearch, deleteResearch } from '@/app/actions/researchActions';
 import { logout } from '@/app/actions/authActions';
@@ -24,6 +24,28 @@ export default function AdminDashboard({
   const [editingResearch, setEditingResearch] = useState<any | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [selectedFileSize, setSelectedFileSize] = useState<string | null>(null);
+
+  // Handle URL query parameters (e.g. /admin?tab=research&action=new)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('tab');
+      const action = params.get('action');
+      if (tab === 'research') {
+        setActiveTab('research');
+        if (action === 'new') {
+          setIsAddingResearch(true);
+          setEditingResearch(null);
+        }
+      } else if (tab === 'blogs') {
+        setActiveTab('blogs');
+        if (action === 'new') {
+          setIsAdding(true);
+          setEditingBlog(null);
+        }
+      }
+    }
+  }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);

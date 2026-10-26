@@ -235,7 +235,9 @@ const dictionaries = {
       },
       header: {
         title: "Publications & Case Studies",
-        subtitle: "Explore our research papers, mathematical models, and operational frameworks available for download in PDF."
+        subtitle: "Explore our research papers, mathematical models, and operational frameworks available for download in PDF.",
+        postNewPdf: "Post New PDF",
+        uploadPdf: "Upload PDF"
       },
       filters: {
         all: "All Topics",
@@ -777,7 +779,9 @@ const dictionaries = {
       },
       header: {
         title: "Publicações & Estudos de Caso",
-        subtitle: "Explore nossas pesquisas revisadas por pares, modelos matemáticos aplicados e estruturas operacionais disponíveis para download em PDF."
+        subtitle: "Explore nossas pesquisas revisadas por pares, modelos matemáticos aplicados e estruturas operacionais disponíveis para download em PDF.",
+        postNewPdf: "Publicar Novo PDF",
+        uploadPdf: "Enviar PDF"
       },
       filters: {
         all: "Todos os Tópicos",

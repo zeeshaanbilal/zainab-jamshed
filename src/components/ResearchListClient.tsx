@@ -113,31 +113,44 @@ export default function ResearchListClient({
           )}
         </div>
 
-        {/* Categories Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-          <button
-            onClick={() => setSelectedCategory('ALL')}
-            className={`px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all whitespace-nowrap shadow-sm ${
-              selectedCategory === 'ALL'
-                ? 'bg-[#7749F8] text-white shadow-[#7749F8]/25 shadow-md'
-                : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-            }`}
-          >
-            {dict.researchPage?.filters?.all || 'All Topics'}
-          </button>
-          {categories.map((cat) => (
+        {/* Categories Pills & Action Button */}
+        <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+          <div className="flex items-center gap-2">
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => setSelectedCategory('ALL')}
               className={`px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all whitespace-nowrap shadow-sm ${
-                selectedCategory.toLowerCase() === cat.toLowerCase()
+                selectedCategory === 'ALL'
                   ? 'bg-[#7749F8] text-white shadow-[#7749F8]/25 shadow-md'
                   : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
               }`}
             >
-              {cat}
+              {dict.researchPage?.filters?.all || 'All Topics'}
             </button>
-          ))}
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all whitespace-nowrap shadow-sm ${
+                  selectedCategory.toLowerCase() === cat.toLowerCase()
+                    ? 'bg-[#7749F8] text-white shadow-[#7749F8]/25 shadow-md'
+                    : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Upload PDF Action Button */}
+          <Link
+            href="/admin?tab=research&action=new"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#7749F8] hover:bg-[#59168B] text-white text-xs md:text-sm font-semibold rounded-xl shadow-sm transition-all whitespace-nowrap shrink-0 hover:shadow-md"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
+            </svg>
+            <span>{dict.researchPage?.header?.uploadPdf || 'Upload PDF'}</span>
+          </Link>
         </div>
       </div>
 
