@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { quickUploadPdf } from '@/app/actions/researchActions';
 
 interface ResearchItem {
   id: string;
@@ -30,9 +31,20 @@ export default function ResearchListClient({
   dict: any;
   lang: string;
 }) {
+  const [items, setItems] = useState<ResearchItem[]>(researchList);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [previewPdf, setPreviewPdf] = useState<{ url: string; title: string; filename?: string } | null>(null);
+
+  // Direct upload states
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadSuccess, setUploadSuccess] = useState<string | null>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    setItems(researchList);
+  }, [researchList]);
 
   // Prevent background scrolling when preview modal is open
   useEffect(() => {
@@ -46,18 +58,50 @@ export default function ResearchListClient({
     };
   }, [previewPdf]);
 
+  // Handle direct file selection from gallery / device documents
+  async function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    setUploadError(null);
+    setUploadSuccess(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('pdfFile', file);
+
+      const result = await quickUploadPdf(formData);
+      if (result?.error) {
+        setUploadError(result.error);
+      } else if (result?.item) {
+        setItems((prev) => [result.item as ResearchItem, ...prev]);
+        setUploadSuccess(`"${file.name}" uploaded successfully!`);
+        setTimeout(() => setUploadSuccess(null), 5000);
+      }
+    } catch (err: any) {
+      console.error('Upload failed:', err);
+      setUploadError(err.message || 'Failed to upload document.');
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  }
+
   // Extract unique categories
   const categories = useMemo(() => {
     const set = new Set<string>();
-    researchList.forEach((item) => {
+    items.forEach((item) => {
       if (item.category) set.add(item.category);
     });
     return Array.from(set);
-  }, [researchList]);
+  }, [items]);
 
   // Filtered research items
   const filteredList = useMemo(() => {
-    return researchList.filter((item) => {
+    return items.filter((item) => {
       const title = lang === 'pt' && item.titlePt ? item.titlePt : item.title;
       const excerpt = lang === 'pt' && item.excerptPt ? item.excerptPt : item.excerpt;
       const author = item.author || '';
@@ -77,7 +121,7 @@ export default function ResearchListClient({
 
       return matchesCategory && matchesSearch;
     });
-  }, [researchList, selectedCategory, searchQuery, lang]);
+  }, [items, selectedCategory, searchQuery, lang]);
 
   function getPdfUrl(item: ResearchItem) {
     if (item.pdfUrl) return item.pdfUrl;
@@ -87,6 +131,79 @@ export default function ResearchListClient({
 
   return (
     <>
+      {/* Hidden File Input that opens native document / gallery picker directly */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="application/pdf,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        onChange={handleFileSelect}
+        className="hidden"
+      />
+
+      {/* Section Header with Direct "Upload PDF" Button */}
+      <div className="mb-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pb-6 border-b border-gray-200/80 animate-slide-down">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold uppercase text-[#59168B]">
+            {dict.researchPage?.header?.title || 'Publications & Case Studies'}
+          </h2>
+          <div className="h-[3px] w-16 bg-[#7749F8] mt-3 mb-3 rounded-full"></div>
+          <p className="text-gray-500 max-w-2xl text-base md:text-lg font-medium">
+            {dict.researchPage?.header?.subtitle || 'Explore and upload research papers, mathematical models, and operational frameworks in PDF.'}
+          </p>
+        </div>
+
+        {/* The One-Click Direct Upload Button */}
+        <button
+          type="button"
+          onClick={() => fileInputRef.current?.click()}
+          disabled={isUploading}
+          className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-gradient-to-r from-[#7749F8] to-[#9065FF] hover:from-[#6537E8] hover:to-[#7E51F7] text-white font-bold rounded-2xl shadow-lg shadow-[#7749F8]/25 hover:shadow-[#7749F8]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm md:text-base shrink-0 group disabled:opacity-60 cursor-pointer"
+        >
+          {isUploading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin shrink-0" />
+          ) : (
+            <div className="p-1 bg-white/20 rounded-lg group-hover:scale-110 transition-transform">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
+              </svg>
+            </div>
+          )}
+          <span>{isUploading ? 'Uploading PDF...' : (dict.researchPage?.header?.uploadPdf || 'Upload PDF')}</span>
+        </button>
+      </div>
+
+      {/* Uploading Status Banner */}
+      {isUploading && (
+        <div className="mb-8 p-4 bg-purple-50 border-2 border-dashed border-[#7749F8]/40 rounded-2xl flex items-center justify-center gap-3 animate-pulse">
+          <div className="w-5 h-5 border-2 border-[#7749F8] border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm font-bold text-[#7749F8]">
+            Uploading document from your files / gallery... Please wait a moment.
+          </p>
+        </div>
+      )}
+
+      {/* Upload Success Alert */}
+      {uploadSuccess && (
+        <div className="mb-8 p-4 bg-emerald-50 border border-emerald-300 rounded-2xl flex items-center justify-between gap-3 animate-slide-down">
+          <div className="flex items-center gap-2 text-emerald-800 text-sm font-semibold">
+            <span className="p-1 bg-emerald-200 text-emerald-900 rounded-full text-xs">✓</span>
+            <span>{uploadSuccess}</span>
+          </div>
+          <button onClick={() => setUploadSuccess(null)} className="text-emerald-600 hover:text-emerald-900 font-bold">✕</button>
+        </div>
+      )}
+
+      {/* Upload Error Alert */}
+      {uploadError && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-300 rounded-2xl flex items-center justify-between gap-3 animate-slide-down">
+          <div className="flex items-center gap-2 text-red-700 text-sm font-semibold">
+            <span>⚠</span>
+            <span>{uploadError}</span>
+          </div>
+          <button onClick={() => setUploadError(null)} className="text-red-500 hover:text-red-800 font-bold">✕</button>
+        </div>
+      )}
+
       {/* Search and Filters Bar */}
       <div className="mb-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         {/* Search Input */}
@@ -141,16 +258,18 @@ export default function ResearchListClient({
             ))}
           </div>
 
-          {/* Upload PDF Action Button */}
-          <Link
-            href="/admin?tab=research&action=new"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#7749F8] hover:bg-[#59168B] text-white text-xs md:text-sm font-semibold rounded-xl shadow-sm transition-all whitespace-nowrap shrink-0 hover:shadow-md"
+          {/* Secondary Quick Upload Button */}
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isUploading}
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#7749F8] hover:bg-[#59168B] text-white text-xs md:text-sm font-semibold rounded-xl shadow-sm transition-all whitespace-nowrap shrink-0 hover:shadow-md cursor-pointer disabled:opacity-50"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
             </svg>
             <span>{dict.researchPage?.header?.uploadPdf || 'Upload PDF'}</span>
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -207,7 +326,7 @@ export default function ResearchListClient({
                 </div>
               </div>
 
-              {/* Excerpt / Abstract */}
+              {/* Excerpt */}
               <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
                 {excerpt}
               </p>
@@ -218,7 +337,7 @@ export default function ResearchListClient({
                   <>
                     <button
                       onClick={() => setPreviewPdf({ url: pdfLink, title, filename: item.pdfFileName || undefined })}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7749F8] hover:text-[#59168B] bg-purple-50 hover:bg-purple-100 px-3 py-2 rounded-lg transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7749F8] hover:text-[#59168B] bg-purple-50 hover:bg-purple-100 px-3 py-2 rounded-lg transition-colors cursor-pointer"
                       title={dict.researchPage?.list?.previewPdf || 'Preview Document'}
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -272,22 +391,21 @@ export default function ResearchListClient({
             <h4 className="text-lg font-bold text-gray-800 mb-1">
               {dict.researchPage?.list?.noResearch || 'No publications found'}
             </h4>
-            <p className="text-sm text-gray-500 max-w-md mx-auto">
+            <p className="text-sm text-gray-500 max-w-md mx-auto mb-4">
               {searchQuery
-                ? `No documents matched "${searchQuery}". Try searching with different keywords or clearing your filter.`
-                : 'Publications will appear here once published from the admin panel.'}
+                ? `No documents matched "${searchQuery}".`
+                : 'Click "Upload PDF" above to upload your document directly from your files.'}
             </p>
-            {searchQuery && (
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('ALL');
-                }}
-                className="mt-4 inline-flex items-center text-xs font-semibold text-[#7749F8] hover:underline"
-              >
-                Clear all filters
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7749F8] text-white text-xs font-semibold rounded-xl shadow-sm hover:bg-[#59168B] transition-colors cursor-pointer"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12" />
+              </svg>
+              <span>{dict.researchPage?.header?.uploadPdf || 'Upload PDF'}</span>
+            </button>
           </div>
         )}
       </div>
@@ -346,7 +464,7 @@ export default function ResearchListClient({
                 {/* Close Button */}
                 <button
                   onClick={() => setPreviewPdf(null)}
-                  className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-700 transition-colors"
+                  className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-700 transition-colors cursor-pointer"
                   aria-label="Close PDF preview"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

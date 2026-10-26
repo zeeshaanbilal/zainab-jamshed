@@ -231,3 +231,77 @@ export async function deleteResearch(id: string) {
     return { error: error.message || 'Failed to delete research paper.' };
   }
 }
+
+export async function quickUploadPdf(formData: FormData) {
+  const file = formData.get('pdfFile') as File | null;
+  if (!file || file.size === 0) {
+    return { error: 'Please select a valid PDF file to upload.' };
+  }
+
+  try {
+    const rawName = file.name || 'Research Document.pdf';
+    const nameWithoutExt = rawName.replace(/\.[^/.]+$/, '');
+    const cleanTitle = nameWithoutExt
+      .replace(/[_-]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const title = cleanTitle
+      .split(' ')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ') || 'Research Document';
+
+    const slug = await generateUniqueResearchSlug(title);
+    const fileSize = formatFileSize(file.size);
+
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    const pdfData = buffer.toString('base64');
+
+    const sanitizedName = `${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
+    await savePdfLocally(file, sanitizedName);
+
+    const finalPdfUrl = `/api/research/${slug}/pdf`;
+    const today = new Date().toISOString().split('T')[0];
+
+    const created = await prisma.research.create({
+      data: {
+        slug,
+        title,
+        author: 'ZJ Logix',
+        date: today,
+        category: 'Publications',
+        excerpt: `Document: ${rawName}`,
+        pdfUrl: finalPdfUrl,
+        pdfData,
+        pdfFileName: rawName,
+        fileSize,
+      },
+    });
+
+    revalidatePath('/research');
+    revalidatePath('/en/research');
+    revalidatePath('/pt/research');
+    revalidatePath('/admin');
+
+    return {
+      success: true,
+      item: {
+        id: created.id,
+        slug: created.slug,
+        title: created.title,
+        author: created.author,
+        date: created.date,
+        category: created.category,
+        excerpt: created.excerpt,
+        pdfUrl: created.pdfUrl,
+        pdfFileName: created.pdfFileName,
+        fileSize: created.fileSize,
+      },
+    };
+  } catch (error: any) {
+    console.error('Error in quickUploadPdf:', error);
+    return { error: error.message || 'Failed to upload document.' };
+  }
+}
+
