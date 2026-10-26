@@ -67,6 +67,7 @@ export default function MobileMenuClient({ dict, lang }: { dict: any, lang: stri
                   )}
                 </div>
 
+                <Link href={`/${lang}/research`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.research}</Link>
                 <Link href={`/${lang}/blogs`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.blogs}</Link>
                 <Link href={`/${lang}/portfolio`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.portfolio}</Link>
                 <Link href={`/${lang}/contact`} onClick={() => setIsOpen(false)} className="hover:text-[#7749F8]">{dict.navbar.contactUs}</Link>

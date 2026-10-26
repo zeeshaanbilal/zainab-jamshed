@@ -50,7 +50,7 @@ export default async function RootLayout({
             </Link>
 
             {/* Nav Links */}
-            <div className="hidden xl:flex items-center gap-4 2xl:gap-8 text-[15px] 2xl:text-lg font-medium text-gray-700 whitespace-nowrap">
+            <div className="hidden xl:flex items-center gap-3.5 2xl:gap-7 text-[14.5px] 2xl:text-[17px] font-medium text-gray-700 whitespace-nowrap">
               <Link href={`/${resolvedParams.lang}/about`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.aboutUs}</Link>
               <div className="relative group">
                 <Link href={`/${resolvedParams.lang}/services`} className="flex items-center gap-1 hover:text-[#7749F8] transition-colors py-6 -my-6">
@@ -70,6 +70,7 @@ export default async function RootLayout({
                   </div>
                 </div>
               </div>
+              <Link href={`/${resolvedParams.lang}/research`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.research}</Link>
               <Link href={`/${resolvedParams.lang}/blogs`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.blogs}</Link>
               <Link href={`/${resolvedParams.lang}/portfolio`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.portfolio}</Link>
               <Link href={`/${resolvedParams.lang}/contact`} className="hover:text-[#7749F8] transition-colors">{dict.navbar.contactUs}</Link>

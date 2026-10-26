@@ -21,6 +21,7 @@ type FooterDict = {
   memberFaq: string;
   contactUs: string;
   portfolio: string;
+  research?: string;
   allRightsReserved: string;
   developedBy: string;
 };
@@ -85,6 +86,7 @@ export default function Footer({ footer }: { footer: FooterDict }) {
             <h3 className="text-white font-extrabold text-[20px] mb-6">{footer.support}</h3>
               <ul className="space-y-4">
                 <li><Link href={`/${lang}/about`} className="text-gray-300 hover:text-white transition-colors">{footer.aboutUs}</Link></li>
+                <li><Link href={`/${lang}/research`} className="text-gray-300 hover:text-white transition-colors">{footer.research || 'Research'}</Link></li>
                 <li><Link href={`/${lang}/portfolio`} className="text-gray-300 hover:text-white transition-colors">{footer.portfolio}</Link></li>
                 <li><Link href={`/${lang}/contact`} className="text-gray-300 hover:text-white transition-colors">{footer.contactUs}</Link></li>
               </ul>

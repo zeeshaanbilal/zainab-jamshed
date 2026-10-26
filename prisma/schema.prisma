@@ -31,3 +31,23 @@ model ContactMessage {
   message   String
   createdAt DateTime @default(now())
 }
+
+model Research {
+  id            String   @id @default(cuid())
+  slug          String   @unique @default(cuid())
+  title         String
+  author        String
+  date          String
+  category      String   @default("Research")
+  excerpt       String
+  description   String?
+  pdfUrl        String?
+  pdfData       String?
+  pdfFileName   String?
+  fileSize      String?
+  titlePt       String?
+  excerptPt     String?
+  descriptionPt String?
+  createdAt     DateTime @default(now())
+}
+

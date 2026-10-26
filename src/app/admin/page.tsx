@@ -11,5 +11,27 @@ export default async function AdminPage() {
     orderBy: { createdAt: 'desc' }
   });
   
-  return <AdminDashboard blogs={blogs} messages={messages} />;
+  const research = await prisma.research.findMany({
+    orderBy: { createdAt: 'desc' },
+    select: {
+      id: true,
+      slug: true,
+      title: true,
+      author: true,
+      date: true,
+      category: true,
+      excerpt: true,
+      description: true,
+      pdfUrl: true,
+      pdfFileName: true,
+      fileSize: true,
+      titlePt: true,
+      excerptPt: true,
+      descriptionPt: true,
+      createdAt: true,
+      // exclude huge base64 from initial page payload
+    }
+  });
+
+  return <AdminDashboard blogs={blogs} messages={messages} research={research} />;
 }

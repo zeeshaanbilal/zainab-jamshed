@@ -141,6 +141,7 @@ const dictionaries = {
       memberFaq: "Member FAQ",
       contactUs: "Contact Us",
       portfolio: "Portfolio",
+      research: "Research",
       allRightsReserved: "All rights reserved.",
       developedBy: "Developed by"
     },
@@ -156,6 +157,7 @@ const dictionaries = {
       monteCarlo: "Monte Carlo Simulation",
       blogs: "Blogs",
       portfolio: "Portfolio",
+      research: "Research",
       contactUs: "Contact Us",
       bookConsultation: "Book Free Consultation"
     },
@@ -222,6 +224,45 @@ const dictionaries = {
       detail: {
         article: "Article",
         backToBlogs: "Back to all blogs"
+      }
+    },
+    researchPage: {
+      hero: {
+        title: "Research & Publications",
+        subtitle: "Rigorous analytical papers, industry whitepapers, and predictive decision frameworks.",
+        breadcrumbsHome: "Home",
+        breadcrumbsResearch: "Research"
+      },
+      header: {
+        title: "Publications & Case Studies",
+        subtitle: "Explore our research papers, mathematical models, and operational frameworks available for download in PDF."
+      },
+      filters: {
+        all: "All Topics",
+        dataAnalytics: "Data Analytics",
+        financialModeling: "Financial Modeling",
+        decisionOptimization: "Decision Optimization",
+        simulation: "Simulations",
+        whitepapers: "Whitepapers"
+      },
+      searchPlaceholder: "Search research papers by title, author, or keyword...",
+      list: {
+        previewPdf: "Preview Document",
+        downloadPdf: "Download PDF",
+        readMore: "View Details",
+        noResearch: "No research publications found. Check back soon or visit our Admin dashboard to post."
+      },
+      detail: {
+        backToResearch: "Back to Research & Publications",
+        publishedBy: "Author",
+        publishedDate: "Published Date",
+        category: "Category",
+        fileSize: "Document Size",
+        pdfViewerTitle: "Interactive Document Preview",
+        abstractTitle: "Executive Abstract & Summary",
+        findingsTitle: "Methodology & Key Analysis",
+        downloadBtn: "Download Full Paper (PDF)",
+        openNewTab: "Open PDF in New Window"
       }
     },
     servicesPage: {
@@ -642,6 +683,7 @@ const dictionaries = {
       memberFaq: "FAQ de Membros",
       contactUs: "Contate-nos",
       portfolio: "Portfólio",
+      research: "Pesquisa",
       allRightsReserved: "Todos os direitos reservados.",
       developedBy: "Desenvolvido por"
     },
@@ -657,6 +699,7 @@ const dictionaries = {
       monteCarlo: "Simulação Monte Carlo",
       blogs: "Blogs",
       portfolio: "Portfólio",
+      research: "Pesquisa",
       contactUs: "Contate-nos",
       bookConsultation: "Agende uma consulta gratuita"
     },
@@ -723,6 +766,45 @@ const dictionaries = {
       detail: {
         article: "Artigo",
         backToBlogs: "Voltar para todos os blogs"
+      }
+    },
+    researchPage: {
+      hero: {
+        title: "Pesquisa & Publicações",
+        subtitle: "Artigos analíticos rigorosos, whitepapers da indústria e estruturas de decisão preditivas.",
+        breadcrumbsHome: "Início",
+        breadcrumbsResearch: "Pesquisa"
+      },
+      header: {
+        title: "Publicações & Estudos de Caso",
+        subtitle: "Explore nossas pesquisas revisadas por pares, modelos matemáticos aplicados e estruturas operacionais disponíveis para download em PDF."
+      },
+      filters: {
+        all: "Todos os Tópicos",
+        dataAnalytics: "Análise de Dados",
+        financialModeling: "Modelagem Financeira",
+        decisionOptimization: "Otimização de Decisões",
+        simulation: "Simulações",
+        whitepapers: "Whitepapers"
+      },
+      searchPlaceholder: "Pesquisar artigos de pesquisa por título, autor ou palavra-chave...",
+      list: {
+        previewPdf: "Visualizar Documento",
+        downloadPdf: "Baixar PDF",
+        readMore: "Ver Detalhes",
+        noResearch: "Nenhuma publicação de pesquisa encontrada. Volte em breve ou use o painel administrativo."
+      },
+      detail: {
+        backToResearch: "Voltar para Pesquisa & Publicações",
+        publishedBy: "Autor",
+        publishedDate: "Data de Publicação",
+        category: "Categoria",
+        fileSize: "Tamanho do Documento",
+        pdfViewerTitle: "Pré-visualização Interativa do Documento",
+        abstractTitle: "Resumo Executivo",
+        findingsTitle: "Metodologia & Análise Principal",
+        downloadBtn: "Baixar Artigo Completo (PDF)",
+        openNewTab: "Abrir PDF em Nova Aba"
       }
     },
     servicesPage: {

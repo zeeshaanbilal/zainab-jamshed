@@ -17,6 +17,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  // Fetch all research publications
+  const research = await prisma.research.findMany({
+    orderBy: { createdAt: 'desc' },
+  });
+
+  const researchUrls = research.map((item) => ({
+    url: `${baseUrl}/research/${item.slug}`,
+    lastModified: item.createdAt,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -79,11 +91,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/research`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
     },
     ...blogUrls,
+    ...researchUrls,
   ];
 }
